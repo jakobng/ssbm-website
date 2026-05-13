@@ -1,73 +1,27 @@
-# React + TypeScript + Vite
+# Super Smash Bros. Melee Guide & History
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A retro-styled, technical guide to Super Smash Bros. Melee (SSBM) on the Nintendo GameCube.
 
-Currently, two official plugins are available:
+## Features
+- **Retro Aesthetic:** Designed with a GameCube/Y2K vibe, including CRT scanline effects and indigo color schemes.
+- **History:** A look back at the development and competitive legacy of the game.
+- **Techniques:** Detailed explanations of universal mechanics like Wavedashing, L-canceling, and DI.
+- **Character Guides:** Interactive training guides for top-tier fighters (Fox, Falco, Marth, Sheik) with animated technique demonstrations.
+- **Keyboard Navigation:** Use 'A' to jump to History and 'B' to jump to Techniques, mimicking the GameCube controller.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
+- **React + Vite**
+- **TypeScript**
+- **Vanilla CSS** (for that custom retro look)
+- **React Router** for navigation
 
-## React Compiler
+## Getting Started
+1. Clone the repo
+2. Run `npm install`
+3. Run `npm run dev`
+4. Open your browser and enjoy the nostalgia!
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Credits
+- Built as a project to celebrate the legacy of Melee.
+- Character renders and GIFs sourced from the Smash community.
+- Created by Leo Nelki.
