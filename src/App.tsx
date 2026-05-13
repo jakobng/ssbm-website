@@ -32,7 +32,7 @@ const NavigationHandler: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <Router basename="/ssbm-website">
       <NavigationHandler />
       <div className="crt-overlay"></div>
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -54,13 +54,13 @@ const App: React.FC = () => {
             color: 'white',
             fontSize: '1.2rem'
           }}>
-            SSBM<span style={{ color: 'var(--gc-accent-orange)' }}>64</span>
+            スマブラ<span style={{ color: 'var(--gc-accent-orange)' }}>DX</span>
           </Link>
           
           <div style={{ display: 'flex', gap: '20px' }}>
-            <Link to="/history" style={{ color: 'white', textDecoration: 'none', fontSize: '0.8rem', fontFamily: 'var(--font-pixel)' }}>HISTORY</Link>
-            <Link to="/techniques" style={{ color: 'white', textDecoration: 'none', fontSize: '0.8rem', fontFamily: 'var(--font-pixel)' }}>GENERAL</Link>
-            <Link to="/characters" style={{ color: 'white', textDecoration: 'none', fontSize: '0.8rem', fontFamily: 'var(--font-pixel)' }}>FIGHTERS</Link>
+            <Link to="/history" style={{ color: 'white', textDecoration: 'none', fontSize: '0.8rem', fontFamily: 'var(--font-pixel)' }}>歴史</Link>
+            <Link to="/techniques" style={{ color: 'white', textDecoration: 'none', fontSize: '0.8rem', fontFamily: 'var(--font-pixel)' }}>共通技</Link>
+            <Link to="/characters" style={{ color: 'white', textDecoration: 'none', fontSize: '0.8rem', fontFamily: 'var(--font-pixel)' }}>ファイター</Link>
           </div>
         </nav>
 
@@ -82,7 +82,7 @@ const App: React.FC = () => {
           fontSize: '0.7rem',
           borderTop: '2px solid var(--gc-indigo)'
         }}>
-          <p>PROPERTY OF NINTENDO. NO RIGHTS RESERVED. (JUST A PROJECT)</p>
+          <p>任天堂の著作物です。非営利プロジェクト。</p>
         </footer>
       </div>
     </Router>

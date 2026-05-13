@@ -3,36 +3,36 @@ import React from 'react';
 const Techniques: React.FC = () => {
   const techs = [
     {
-      name: 'WAVEDASH',
-      input: 'Jump -> Air Dodge (Down/Diagonal)',
-      desc: 'The foundational movement tech. Allows sliding while standing, enabling any ground attack while moving.'
+      name: '絶（ウェーブダッシュ）',
+      input: 'ジャンプ -> 空中回避（下/斜め下）',
+      desc: '基礎となる移動テクニック。立った状態のまま滑るように移動でき、移動しながら地上技を出すことが可能になります。'
     },
     {
-      name: 'L-CANCEL',
-      input: 'L, R, or Z (7 frames before landing)',
-      desc: 'Halves landing lag on aerial attacks. Crucial for maintaining pressure and continuing combos.'
+      name: 'Lキャンセル',
+      input: '着地直前（7フレーム以内）にL/R/Z',
+      desc: '空中攻撃の着地硬直を半分に短縮します。攻めを継続し、コンボを繋げるために不可欠な技術です。'
     },
     {
-      name: 'DASH DANCE',
-      input: 'Flick Stick Left/Right rapidly',
-      desc: 'Weaving in and out of range during initial dash. Baits attacks and creates movement ambiguity.'
+      name: 'ダッシュダンス',
+      input: 'スティックを左右に素早く弾く',
+      desc: 'ステップ中に反転を繰り返すことで、間合いを管理し、相手の攻撃を誘ったり動きを翻弄したりします。'
     },
     {
-      name: 'DI (Directional Influence)',
-      input: 'Hold Stick perpendicular to launch',
-      desc: 'The primary survival mechanic. Changes your trajectory after being hit to avoid blast zones.'
+      name: 'ベクトルのずらし (DI)',
+      input: '吹っ飛び方向に対して垂直にスティックを倒す',
+      desc: '主要な防御メカニクス。攻撃を受けた瞬間にスティックを入力することで、吹っ飛びの軌道を変え、撃墜を免れます。'
     }
   ];
 
   return (
     <div style={{ padding: '40px' }}>
-      <h2 style={{ marginBottom: '30px', textAlign: 'center' }}>UNIVERSAL TECHNIQUES</h2>
+      <h2 style={{ marginBottom: '30px', textAlign: 'center' }}>共通テクニック</h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
         {techs.map(tech => (
           <div key={tech.name} className="glass-panel" style={{ borderLeft: '5px solid var(--gc-accent-orange)' }}>
             <h3 style={{ fontSize: '1.2rem', marginBottom: '10px' }}>{tech.name}</h3>
             <p style={{ color: 'var(--gc-accent-green)', fontSize: '0.8rem', marginBottom: '10px', fontFamily: 'var(--font-pixel)' }}>
-              INPUT: {tech.input}
+              入力: {tech.input}
             </p>
             <p style={{ color: 'var(--gc-silver)', fontSize: '0.9rem' }}>{tech.desc}</p>
           </div>
