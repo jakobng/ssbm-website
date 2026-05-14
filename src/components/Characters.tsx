@@ -8,10 +8,8 @@ interface CharacterData {
   techs: { name: string; desc: string; gif?: string }[];
 }
 
-// Helper to get local asset paths compatible with GitHub Pages base path
 const getAssetUrl = (path: string) => {
   const base = import.meta.env.BASE_URL;
-  // Ensure we don't double slash
   const cleanBase = base.endsWith('/') ? base : base + '/';
   const cleanPath = path.startsWith('/') ? path.substring(1) : path;
   return `${cleanBase}${cleanPath}`;
@@ -32,7 +30,7 @@ const characters: CharacterData[] = [
       { 
         name: 'ドリルシャイン', 
         desc: '下空中攻撃（多段ヒット）から着地後に即リフレクターを出す連携。強力なシールドプレッシャーとなります。',
-        gif: getAssetUrl('images/techs/fox_waveshine.gif') // Fallback to waveshine if drill is missing
+        gif: getAssetUrl('images/techs/fox_waveshine.gif')
       },
       { 
         name: 'シャイン掴み', 
