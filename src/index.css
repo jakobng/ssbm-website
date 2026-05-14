@@ -1,15 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700&family=DotGothic16&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&family=DotGothic16&display=swap');
 
 :root {
-  --gc-indigo: #6B5CB1;
-  --gc-indigo-dark: #4A3F7A;
-  --gc-indigo-light: #8E7FD1;
-  --gc-accent-green: #A4C639;
-  --gc-accent-red: #E60012;
-  --gc-accent-orange: #FF8C00;
-  --gc-silver: #C0C0C0;
-  --gc-black: #000E5E;
-  
+  --gc-indigo: #6b5cb1;
+  --gc-indigo-dark: #3b315f;
+  --gc-indigo-light: #9b8bd5;
+  --gc-accent-green: #a4c639;
+  --gc-accent-red: #e60012;
+  --gc-accent-orange: #ff8c00;
+  --gc-silver: #c9d0df;
+  --gc-black: #060817;
+  --gc-panel: rgba(20, 24, 48, 0.72);
+  --gc-panel-strong: rgba(11, 16, 34, 0.88);
   --font-pixel: 'DotGothic16', 'Press Start 2P', cursive;
   --font-tech: 'Orbitron', sans-serif;
 }
@@ -20,77 +21,58 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: var(--gc-black);
+  min-height: 100vh;
   color: white;
   font-family: var(--font-tech);
+  background:
+    radial-gradient(circle at top left, rgba(107, 92, 177, 0.28), transparent 32%),
+    radial-gradient(circle at top right, rgba(255, 140, 0, 0.18), transparent 28%),
+    linear-gradient(180deg, #0a1028 0%, #04070f 100%);
   overflow-x: hidden;
+}
+
+#root {
   min-height: 100vh;
 }
 
-h1, h2, h3 {
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-pixel);
   text-transform: uppercase;
-  color: var(--gc-accent-orange);
-  text-shadow: 2px 2px var(--gc-indigo);
+  color: white;
+  text-shadow: 2px 2px rgba(107, 92, 177, 0.85);
 }
 
-/* CRT Scanline Effect */
 .crt-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(
-    rgba(18, 16, 16, 0) 50%,
-    rgba(0, 0, 0, 0.1) 50%
-  ),
-  linear-gradient(
-    90deg,
-    rgba(255, 0, 0, 0.03),
-    rgba(0, 255, 0, 0.01),
-    rgba(0, 0, 118, 0.03)
-  );
-  background-size: 100% 4px, 3px 100%;
+  inset: 0;
   pointer-events: none;
   z-index: 9999;
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.035), rgba(0, 255, 0, 0.015), rgba(0, 0, 118, 0.035));
+  background-size: 100% 4px, 3px 100%;
 }
-
-/* Glassmorphism Container */
-.glass-panel {
-  background: rgba(107, 92, 177, 0.2);
-  backdrop-filter: blur(10px);
-  border: 2px solid var(--gc-indigo-light);
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
-/* Retro Button */
-.gc-button {
-  font-family: var(--font-pixel);
-  background: var(--gc-indigo);
-  color: white;
-  border: 4px solid var(--gc-indigo-light);
-  border-bottom: 8px solid var(--gc-indigo-dark);
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: transform 0.1s;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-}
-
-.gc-button:hover {
-  transform: scale(1.05);
-  background: var(--gc-indigo-light);
-}
-
-.gc-button:active {
-  transform: translateY(4px);
-  border-bottom-width: 4px;
-}
-
-.a-button { background: var(--gc-accent-green); border-color: #C0D860; border-bottom-color: #6D8426; }
-.b-button { background: var(--gc-accent-red); border-color: #FF4D4D; border-bottom-color: #8B0000; }

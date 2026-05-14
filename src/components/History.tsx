@@ -2,34 +2,58 @@ import React from 'react';
 
 const History: React.FC = () => {
   return (
-    <div style={{ padding: '40px', maxWidth: '900px', margin: '0 auto' }}>
-      <h2 style={{ marginBottom: '30px', textAlign: 'center' }}>スマブラDX年代記</h2>
-      
-      <div className="glass-panel" style={{ marginBottom: '30px' }}>
-        <h3 style={{ color: 'var(--gc-accent-green)', marginBottom: '10px' }}>2001年：創世記</h3>
-        <p style={{ lineHeight: '1.6', color: 'var(--gc-silver)' }}>
-          桜井政博氏の指揮の下、HAL研究所によってわずか13ヶ月で開発された『大乱闘スマッシュブラザーズDX』は、
-          ニンテンドーゲームキューブのフラッグシップタイトルとして発売されました。
-          前作N64版のフォーミュラを洗練させ、14体の新キャラクターを追加し、世代を定義する技術的深みをもたらしました。
-        </p>
-      </div>
+    <div className="page">
+      <section className="page-hero">
+        <div>
+          <p className="eyebrow">Timeline</p>
+          <h2>スマブラDX年代記</h2>
+          <p className="page-copy">
+            発売の背景から対戦シーンの成熟まで、DXがどうやって今の形になったのかを短く追えるページです。
+          </p>
+        </div>
+        <div className="stat-strip">
+          <div className="stat-chip">
+            <span className="stat-chip__value">2001</span>
+            <span className="stat-chip__label">release year</span>
+          </div>
+          <div className="stat-chip">
+            <span className="stat-chip__value">Slippi</span>
+            <span className="stat-chip__label">modern revival</span>
+          </div>
+          <div className="stat-chip">
+            <span className="stat-chip__value">20+</span>
+            <span className="stat-chip__label">years of legacy</span>
+          </div>
+        </div>
+      </section>
 
-      <div className="glass-panel" style={{ marginBottom: '30px' }}>
-        <h3 style={{ color: 'var(--gc-accent-red)', marginBottom: '10px' }}>対戦シーンの爆発的普及</h3>
-        <p style={{ lineHeight: '1.6', color: 'var(--gc-silver)' }}>
-          パーティゲームとして意図されていましたが、プレイヤーたちは「絶（ウェーブダッシュ）」や「Lキャンセル」
-          といった意図しないメカニクスを発見しました。これにより、DXは超高速でテクニカルな格闘ゲームへと変貌を遂げました。
-          「五神」（Mew2King, Mango, Armada, Hungrybox, PPMD）の時代を経て、続編の発売後もシーンは生き残り、強化されていきました。
-        </p>
-      </div>
+      <div className="home-grid">
+        <article className="glass-panel home-card">
+          <p className="eyebrow">2001</p>
+          <h3>創世記</h3>
+          <p>
+            『大乱闘スマッシュブラザーズDX』は、ニンテンドーゲームキューブの旗艦タイトルとして発売されました。
+            前作からキャラ数、スピード、技術的な深さのすべてが大きく拡張されました。
+          </p>
+        </article>
 
-      <div className="glass-panel">
-        <h3 style={{ color: 'var(--gc-accent-orange)', marginBottom: '10px' }}>類まれなる遺産</h3>
-        <p style={{ lineHeight: '1.6', color: 'var(--gc-silver)' }}>
-          今日でも、DXは『Genesis』や『The Big House』といった主要なトーナメントの主役であり続けています。
-          『Slippi』のようなコミュニティ主導のプロジェクトが、20年以上前のタイトルにロールバック・ネットコードをもたらし、
-          ゲームキューブ最大の傑作は現代においても繁栄し続けています。
-        </p>
+        <article className="glass-panel home-card">
+          <p className="eyebrow">Discovery</p>
+          <h3>対戦シーンの爆発</h3>
+          <p>
+            ウェーブダッシュやLキャンセルなど、開発側が全面的に想定していなかったテクニックが発見され、
+            DXは一気に超高速の対戦ゲームとして再発見されました。
+          </p>
+        </article>
+
+        <article className="glass-panel home-card">
+          <p className="eyebrow">Today</p>
+          <h3>現在の遺産</h3>
+          <p>
+            Major大会やSlippiの普及を通じて、20年以上前の作品が今も遊ばれ続けています。
+            競技シーンの成熟とコミュニティの熱量が、DXを継続的に更新し続けています。
+          </p>
+        </article>
       </div>
     </div>
   );

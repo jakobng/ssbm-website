@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, NavLink, Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './components/Home';
 import History from './components/History';
 import Techniques from './components/Techniques';
@@ -16,10 +16,14 @@ const NavigationHandler: React.FC = () => {
       }
 
       const key = event.key.toLowerCase();
-      if (key === 'a') {
+      if (key === 'h') {
+        navigate('/');
+      } else if (key === 'i') {
         navigate('/history');
-      } else if (key === 'b') {
+      } else if (key === 't') {
         navigate('/techniques');
+      } else if (key === 'c') {
+        navigate('/characters');
       }
     };
 
@@ -34,38 +38,27 @@ const App: React.FC = () => {
   return (
     <Router basename="/ssbm-website">
       <NavigationHandler />
-      <div className="crt-overlay"></div>
-      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-        {/* Navigation Bar */}
-        <nav style={{
-          background: 'var(--gc-indigo)',
-          padding: '15px 30px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderBottom: '4px solid var(--gc-indigo-dark)',
-          position: 'sticky',
-          top: 0,
-          zIndex: 1000
-        }}>
-          <Link to="/" style={{ 
-            textDecoration: 'none', 
-            fontFamily: 'var(--font-pixel)', 
-            color: 'white',
-            fontSize: '1.2rem'
-          }}>
-            スマブラ<span style={{ color: 'var(--gc-accent-orange)' }}>DX</span>
-          </Link>
-          
-          <div style={{ display: 'flex', gap: '20px' }}>
-            <Link to="/history" style={{ color: 'white', textDecoration: 'none', fontSize: '0.8rem', fontFamily: 'var(--font-pixel)' }}>歴史</Link>
-            <Link to="/techniques" style={{ color: 'white', textDecoration: 'none', fontSize: '0.8rem', fontFamily: 'var(--font-pixel)' }}>共通技</Link>
-            <Link to="/characters" style={{ color: 'white', textDecoration: 'none', fontSize: '0.8rem', fontFamily: 'var(--font-pixel)' }}>ファイター</Link>
-          </div>
-        </nav>
+      <div className="crt-overlay" />
+      <div className="app-shell">
+        <header className="topbar">
+          <NavLink to="/" className="topbar__brand">
+            スマブラ<span>DX</span>
+          </NavLink>
 
-        {/* Main Content */}
-        <main style={{ flex: 1 }}>
+          <nav className="topbar__nav" aria-label="Primary navigation">
+            <NavLink to="/history" className={({ isActive }) => `nav-link${isActive ? ' nav-link--active' : ''}`}>
+              歴史
+            </NavLink>
+            <NavLink to="/techniques" className={({ isActive }) => `nav-link${isActive ? ' nav-link--active' : ''}`}>
+              共通技
+            </NavLink>
+            <NavLink to="/characters" className={({ isActive }) => `nav-link${isActive ? ' nav-link--active' : ''}`}>
+              ファイター
+            </NavLink>
+          </nav>
+        </header>
+
+        <main className="app-main">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/history" element={<History />} />
@@ -74,14 +67,7 @@ const App: React.FC = () => {
           </Routes>
         </main>
 
-        {/* Footer */}
-        <footer style={{
-          padding: '20px',
-          textAlign: 'center',
-          color: 'var(--gc-silver)',
-          fontSize: '0.7rem',
-          borderTop: '2px solid var(--gc-indigo)'
-        }}>
+        <footer className="site-footer">
           <p>任天堂の著作物です。非営利プロジェクト。</p>
         </footer>
       </div>

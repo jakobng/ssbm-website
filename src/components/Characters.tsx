@@ -1,219 +1,137 @@
 import React, { useState } from 'react';
+import MovePreview from './MovePreview';
+import { fighters, type FighterData } from '../data/gameData';
 
-interface CharacterData {
-  id: string;
-  name: string;
-  color: string;
-  image: string;
-  techs: { name: string; desc: string; gif?: string }[];
-}
-
-const getAssetUrl = (path: string) => {
-  const base = import.meta.env.BASE_URL;
-  const cleanBase = base.endsWith('/') ? base : base + '/';
-  const cleanPath = path.startsWith('/') ? path.substring(1) : path;
-  return `${cleanBase}${cleanPath}`;
-};
-
-const characters: CharacterData[] = [
-  {
-    id: 'fox',
-    name: 'フォックス',
-    color: '#E60012',
-    image: getAssetUrl('images/characters/fox.png'), 
-    techs: [
-      { 
-        name: 'ウェーブシャイン', 
-        desc: 'リフレクター（1フレーム発生）から絶（ウェーブダッシュ）でキャンセルする技術。コンボの起点や撃墜に繋げます。',
-        gif: getAssetUrl('images/techs/fox_waveshine.gif')
-      },
-      { 
-        name: 'ドリルシャイン', 
-        desc: '下空中攻撃（多段ヒット）から着地後に即リフレクターを出す連携。強力なシールドプレッシャーとなります。',
-        gif: getAssetUrl('images/techs/fox_waveshine.gif')
-      },
-      { 
-        name: 'シャイン掴み', 
-        desc: 'リフレクターをジャンプキャンセルして即座に掴む技術。ガードを固める相手に対して非常に有効です。',
-        gif: getAssetUrl('images/techs/fox_waveshine.gif')
-      }
-    ]
-  },
-  {
-    id: 'falco',
-    name: 'ファルコ',
-    color: '#6B5CB1',
-    image: getAssetUrl('images/characters/falco.png'),
-    techs: [
-      { 
-        name: 'ピラーコンボ', 
-        desc: '下空中攻撃のメテオとリフレクターの打ち上げを交互に繰り返す、ファルコ特有の垂直コンボ。',
-        gif: getAssetUrl('images/techs/falco_pillar.gif')
-      },
-      { 
-        name: 'ショートホップブラスター', 
-        desc: '小ジャンプ中にブラスターを撃つことで、着地硬直をなくしつつ相手の動きを制限する立ち回りの要。',
-        gif: getAssetUrl('images/techs/falco_pillar.gif')
-      },
-      { 
-        name: 'パワーシールド', 
-        desc: '飛び道具をジャストガードで反射する技術。ファルコの反射は弾速が上がり非常に強力です。',
-        gif: getAssetUrl('images/techs/falco_pillar.gif')
-      }
-    ]
-  },
-  {
-    id: 'marth',
-    name: 'マルス',
-    color: '#007FFF',
-    image: getAssetUrl('images/characters/marth.png'),
-    techs: [
-      { 
-        name: '先端の間合い管理', 
-        desc: '剣の先端で捉えることで、最大の威力と吹っ飛ばしを発生させる。マルスの生命線とも言える技術。',
-        gif: getAssetUrl('images/techs/marth_ken_combo.gif')
-      },
-      { 
-        name: 'ケンコンボ', 
-        desc: '前空中攻撃から、ジャンプを挟んで下空中攻撃のメテオに繋げる、最も有名な即死コンボの一つ。',
-        gif: getAssetUrl('images/techs/marth_ken_combo.gif')
-      },
-      { 
-        name: '投げ連 (チェイングラブ)', 
-        desc: '終点などでフォックス等の速落下キャラに対し、上投げから再び掴みを繋げ続けるハメ技に近い連携。',
-        gif: getAssetUrl('images/techs/marth_ken_combo.gif')
-      }
-    ]
-  },
-  {
-    id: 'sheik',
-    name: 'シーク',
-    color: '#FF69B4',
-    image: getAssetUrl('images/characters/sheik.png'),
-    techs: [
-      { 
-        name: '受け身狩り', 
-        desc: '下投げ後に相手の受け身を完全に反応で見て、再び掴みや攻撃を叩き込むシークの強力なパターン。',
-        gif: getAssetUrl('images/techs/sheik_tech_chase.gif')
-      },
-      { 
-        name: '針反転', 
-        desc: '空中で針を溜める動作を利用して瞬時に反転し、崖を掴んだり後方の相手を牽制する技術。',
-        gif: getAssetUrl('images/techs/sheik_tech_chase.gif')
-      },
-      { 
-        name: 'ブーストグラブ', 
-        desc: 'ダッシュ攻撃の出だしを掴みでキャンセルすることで、滑りながら遠くの相手を掴むテクニック。',
-        gif: getAssetUrl('images/techs/sheik_tech_chase.gif')
-      }
-    ]
-  }
-];
+const getCardStyle = (fighter: FighterData): React.CSSProperties => ({
+  '--fighter-accent': fighter.color,
+} as React.CSSProperties);
 
 const Characters: React.FC = () => {
-  const [selected, setSelected] = useState<CharacterData | null>(null);
-
-  if (selected) {
-    return (
-      <div style={{ padding: '40px', maxWidth: '1200px', margin: '0 auto' }}>
-        <button 
-          onClick={() => setSelected(null)} 
-          className="gc-button b-button" 
-          style={{ marginBottom: '20px' }}
-        >
-          戻る
-        </button>
-        
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '30px' }}>
-          <div className="glass-panel" style={{ textAlign: 'center', borderBottom: `5px solid ${selected.color}`, height: 'fit-content' }}>
-            <img 
-              src={selected.image} 
-              alt={selected.name} 
-              style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.3))' }} 
-            />
-            <h2 style={{ color: selected.color, marginTop: '20px' }}>{selected.name}</h2>
-          </div>
-
-          <div style={{ display: 'grid', gap: '20px' }}>
-            <div className="glass-panel" style={{ borderTop: `10px solid ${selected.color}` }}>
-              <h3 style={{ marginBottom: '20px', fontSize: '1.5rem' }}>対戦用テクニック ＆ アニメーション</h3>
-              <div style={{ display: 'grid', gap: '40px' }}>
-                {selected.techs.map(tech => (
-                  <div key={tech.name} style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '25px' }}>
-                    <div>
-                      <h3 style={{ fontSize: '1.1rem', color: 'var(--gc-accent-green)' }}>{tech.name}</h3>
-                      <p style={{ color: 'var(--gc-silver)', marginTop: '10px', lineHeight: '1.6' }}>{tech.desc}</p>
-                    </div>
-                    {tech.gif && (
-                      <div className="glass-panel" style={{ padding: '5px', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.4)', minHeight: '150px' }}>
-                        <img 
-                          src={tech.gif} 
-                          alt={tech.name} 
-                          style={{ maxWidth: '100%', height: 'auto', borderRadius: '4px' }}
-                          loading="lazy"
-                        />
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const [selectedId, setSelectedId] = useState(fighters[0].id);
+  const selected = fighters.find((fighter) => fighter.id === selectedId) ?? fighters[0];
 
   return (
-    <div style={{ padding: '40px' }}>
-      <h2 style={{ marginBottom: '40px', textAlign: 'center' }}>ファイターを選択</h2>
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', 
-        gap: '30px',
-        maxWidth: '1200px',
-        margin: '0 auto'
-      }}>
-        {characters.map(char => (
-          <div 
-            key={char.id} 
-            className="glass-panel" 
-            style={{ 
-              cursor: 'pointer', 
-              textAlign: 'center',
-              transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-              border: '2px solid transparent',
-              overflow: 'hidden',
-              position: 'relative'
-            }}
-            onClick={() => setSelected(char)}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = char.color;
-              e.currentTarget.style.transform = 'translateY(-10px)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = 'transparent';
-              e.currentTarget.style.transform = 'translateY(0)';
-            }}
-          >
-            <div style={{ 
-              height: '200px', 
-              display: 'flex', 
-              alignItems: 'center', 
-              justifyContent: 'center',
-              marginBottom: '15px',
-              background: `linear-gradient(to bottom, transparent, ${char.color}22)`
-            }}>
-              <img 
-                src={char.image} 
-                alt={char.name} 
-                style={{ height: '90%', width: 'auto', objectFit: 'contain' }} 
-              />
-            </div>
-            <h3 style={{ color: char.color, position: 'relative', zIndex: 1 }}>{char.name}</h3>
-            <p style={{ fontSize: '0.7rem', color: 'var(--gc-silver)', marginTop: '10px' }}>技データを見る</p>
+    <div className="page page--roster">
+      <section className="page-hero">
+        <div>
+          <p className="eyebrow">Character Lab</p>
+          <h2>ファイターを選択</h2>
+          <p className="page-copy">
+            4体だった一覧を、試合の見え方が変わる8体のロスターへ拡張しました。
+            それぞれの代表技は、GIFの代わりにローカルアニメーションで再現しています。
+          </p>
+        </div>
+        <div className="stat-strip">
+          <div className="stat-chip">
+            <span className="stat-chip__value">{fighters.length}</span>
+            <span className="stat-chip__label">fighters</span>
           </div>
-        ))}
+          <div className="stat-chip">
+            <span className="stat-chip__value">{fighters.reduce((total, fighter) => total + fighter.moves.length, 0)}</span>
+            <span className="stat-chip__label">moves</span>
+          </div>
+          <div className="stat-chip">
+            <span className="stat-chip__value">100%</span>
+            <span className="stat-chip__label">local motion</span>
+          </div>
+        </div>
+      </section>
+
+      <div className="roster-layout">
+        <aside className="roster-list glass-panel">
+          {fighters.map((fighter) => {
+            const isSelected = fighter.id === selected.id;
+
+            return (
+              <button
+                key={fighter.id}
+                type="button"
+                className={`fighter-card${isSelected ? ' fighter-card--active' : ''}`}
+                style={getCardStyle(fighter)}
+                onClick={() => setSelectedId(fighter.id)}
+              >
+                <div className="fighter-card__portrait">
+                  {fighter.image ? (
+                    <img src={fighter.image} alt={fighter.name} />
+                  ) : (
+                    <div className="fighter-card__emblem">
+                      <span>{fighter.emblem}</span>
+                    </div>
+                  )}
+                </div>
+                <div className="fighter-card__body">
+                  <div>
+                    <h3>{fighter.name}</h3>
+                    <p className="fighter-card__title">{fighter.title}</p>
+                  </div>
+                  <p className="fighter-card__summary">{fighter.summary}</p>
+                  <div className="fighter-card__tags">
+                    {fighter.strengths.slice(0, 2).map((strength) => (
+                      <span key={strength}>{strength}</span>
+                    ))}
+                  </div>
+                </div>
+              </button>
+            );
+          })}
+        </aside>
+
+        <section className="fighter-detail glass-panel" style={getCardStyle(selected)}>
+          <div className="fighter-detail__header">
+            <div className="fighter-detail__identity">
+              <p className="eyebrow">Selected Fighter</p>
+              <h3>{selected.name}</h3>
+              <p className="fighter-detail__title">{selected.title}</p>
+              <p className="fighter-detail__summary">{selected.summary}</p>
+            </div>
+
+            <div className="fighter-detail__portrait">
+              {selected.image ? (
+                <img src={selected.image} alt={selected.name} />
+              ) : (
+                <div className="fighter-card__emblem fighter-card__emblem--large">
+                  <span>{selected.emblem}</span>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="fighter-detail__meta">
+            <div className="info-pill">
+              <span className="info-pill__label">style</span>
+              <span className="info-pill__value">{selected.style}</span>
+            </div>
+            <div className="info-pill">
+              <span className="info-pill__label">moves</span>
+              <span className="info-pill__value">{selected.moves.length}</span>
+            </div>
+            <div className="info-pill">
+              <span className="info-pill__label">accent</span>
+              <span className="info-pill__value">{selected.color}</span>
+            </div>
+          </div>
+
+          <div className="fighter-detail__strengths">
+            {selected.strengths.map((strength) => (
+              <span key={strength} className="strength-pill">
+                {strength}
+              </span>
+            ))}
+          </div>
+
+          <div className="move-grid">
+            {selected.moves.map((move) => (
+              <article key={move.name} className="move-card">
+                <div className="move-card__copy">
+                  <p className="move-card__note">{move.note}</p>
+                  <h4>{move.name}</h4>
+                  <p className="move-card__detail">{move.detail}</p>
+                </div>
+                <MovePreview motion={move.motion} accent={selected.color} label={move.name} />
+              </article>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );
