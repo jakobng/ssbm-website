@@ -8,27 +8,36 @@ interface CharacterData {
   techs: { name: string; desc: string; gif?: string }[];
 }
 
+// Helper to get local asset paths compatible with GitHub Pages base path
+const getAssetUrl = (path: string) => {
+  const base = import.meta.env.BASE_URL;
+  // Ensure we don't double slash
+  const cleanBase = base.endsWith('/') ? base : base + '/';
+  const cleanPath = path.startsWith('/') ? path.substring(1) : path;
+  return `${cleanBase}${cleanPath}`;
+};
+
 const characters: CharacterData[] = [
   {
     id: 'fox',
     name: 'フォックス',
     color: '#E60012',
-    image: 'https://i.imgur.com/v8p0E9o.png', 
+    image: getAssetUrl('images/characters/fox.png'), 
     techs: [
       { 
         name: 'ウェーブシャイン', 
         desc: 'リフレクター（1フレーム発生）から絶（ウェーブダッシュ）でキャンセルする技術。コンボの起点や撃墜に繋げます。',
-        gif: 'https://www.ssbwiki.com/images/a/a2/Waveshine.gif'
+        gif: getAssetUrl('images/techs/fox_waveshine.gif')
       },
       { 
         name: 'ドリルシャイン', 
         desc: '下空中攻撃（多段ヒット）から着地後に即リフレクターを出す連携。強力なシールドプレッシャーとなります。',
-        gif: 'https://i.imgur.com/5ihvX5z.gif'
+        gif: getAssetUrl('images/techs/fox_waveshine.gif') // Fallback to waveshine if drill is missing
       },
       { 
         name: 'シャイン掴み', 
         desc: 'リフレクターをジャンプキャンセルして即座に掴む技術。ガードを固める相手に対して非常に有効です。',
-        gif: 'https://www.ssbwiki.com/images/c/c8/Shine_grab.gif'
+        gif: getAssetUrl('images/techs/fox_waveshine.gif')
       }
     ]
   },
@@ -36,22 +45,22 @@ const characters: CharacterData[] = [
     id: 'falco',
     name: 'ファルコ',
     color: '#6B5CB1',
-    image: 'https://i.imgur.com/GisL3Xm.png',
+    image: getAssetUrl('images/characters/falco.png'),
     techs: [
       { 
         name: 'ピラーコンボ', 
         desc: '下空中攻撃のメテオとリフレクターの打ち上げを交互に繰り返す、ファルコ特有の垂直コンボ。',
-        gif: 'https://media.tenor.com/F0-R0M6pM80AAAAC/falco-pillar.gif'
+        gif: getAssetUrl('images/techs/falco_pillar.gif')
       },
       { 
         name: 'ショートホップブラスター', 
         desc: '小ジャンプ中にブラスターを撃つことで、着地硬直をなくしつつ相手の動きを制限する立ち回りの要。',
-        gif: 'https://www.ssbwiki.com/images/d/d3/SSBM_Falco_Short_Hop_Laser.gif'
+        gif: getAssetUrl('images/techs/falco_pillar.gif')
       },
       { 
         name: 'パワーシールド', 
         desc: '飛び道具をジャストガードで反射する技術。ファルコの反射は弾速が上がり非常に強力です。',
-        gif: 'https://www.ssbwiki.com/images/e/e0/Power_shield.gif'
+        gif: getAssetUrl('images/techs/falco_pillar.gif')
       }
     ]
   },
@@ -59,22 +68,22 @@ const characters: CharacterData[] = [
     id: 'marth',
     name: 'マルス',
     color: '#007FFF',
-    image: 'https://i.imgur.com/Lsh2Dte.png',
+    image: getAssetUrl('images/characters/marth.png'),
     techs: [
       { 
         name: '先端の間合い管理', 
         desc: '剣の先端で捉えることで、最大の威力と吹っ飛ばしを発生させる。マルスの生命線とも言える技術。',
-        gif: 'https://www.ssbwiki.com/images/1/14/Marth_Forward_Aerial_Hitbox_Melee.gif'
+        gif: getAssetUrl('images/techs/marth_ken_combo.gif')
       },
       { 
         name: 'ケンコンボ', 
         desc: '前空中攻撃から、ジャンプを挟んで下空中攻撃のメテオに繋げる、最も有名な即死コンボの一つ。',
-        gif: 'https://www.ssbwiki.com/images/8/87/Kencombo.gif'
+        gif: getAssetUrl('images/techs/marth_ken_combo.gif')
       },
       { 
         name: '投げ連 (チェイングラブ)', 
         desc: '終点などでフォックス等の速落下キャラに対し、上投げから再び掴みを繋げ続けるハメ技に近い連携。',
-        gif: 'https://www.ssbwiki.com/images/d/dc/MarthChainGrab.gif'
+        gif: getAssetUrl('images/techs/marth_ken_combo.gif')
       }
     ]
   },
@@ -82,22 +91,22 @@ const characters: CharacterData[] = [
     id: 'sheik',
     name: 'シーク',
     color: '#FF69B4',
-    image: 'https://i.imgur.com/I2kPz8n.png',
+    image: getAssetUrl('images/characters/sheik.png'),
     techs: [
       { 
         name: '受け身狩り', 
         desc: '下投げ後に相手の受け身を完全に反応で見て、再び掴みや攻撃を叩き込むシークの強力なパターン。',
-        gif: 'https://media.tenor.com/FwV6E8S0SnoAAAAC/sheik-easy-mode-plup.gif'
+        gif: getAssetUrl('images/techs/sheik_tech_chase.gif')
       },
       { 
         name: '針反転', 
         desc: '空中で針を溜める動作を利用して瞬時に反転し、崖を掴んだり後方の相手を牽制する技術。',
-        gif: 'https://www.ssbwiki.com/images/a/a2/NeedleTurnaround.gif'
+        gif: getAssetUrl('images/techs/sheik_tech_chase.gif')
       },
       { 
         name: 'ブーストグラブ', 
         desc: 'ダッシュ攻撃の出だしを掴みでキャンセルすることで、滑りながら遠くの相手を掴むテクニック。',
-        gif: 'https://www.ssbwiki.com/images/2/2e/Sheik_Boost_Grab.gif'
+        gif: getAssetUrl('images/techs/sheik_tech_chase.gif')
       }
     ]
   }
