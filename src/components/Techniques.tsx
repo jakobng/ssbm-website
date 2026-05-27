@@ -6,24 +6,22 @@ const Techniques: React.FC = () => {
     <div className="page page--placeholder">
       <section className="page-hero">
         <div>
-          <p className="eyebrow">How to play</p>
-          <h2>Coming soon</h2>
+          <p className="eyebrow">遊び方</p>
+          <h2>準備中</h2>
           <p className="page-copy">
-            We are leaving this section blank for now so we can build the beginner technique guide carefully.
-            The full breakdown will live here later.
+            ここは いま まっしろです。あとで、初心者むけの 技のページを 入れます。
           </p>
         </div>
       </section>
 
       <div className="glass-panel placeholder-card">
-        <p className="placeholder-card__label">Placeholder</p>
-        <h3>Technique guide is still being written</h3>
+        <p className="placeholder-card__label">仮ページ</p>
+        <h3>技の説明は これから</h3>
         <p>
-          When this page is ready, it will explain the basics in a beginner-friendly way: movement, shielding, ledge play,
-          and the first advanced techniques that matter in real matches.
+          うごき方、シールド、崖の動き、そして さいしょに おぼえる大事な技を、わかりやすく まとめます。
         </p>
         <Link to="/" className="gc-button a-button">
-          Back to home
+          ホームへ
         </Link>
       </div>
     </div>

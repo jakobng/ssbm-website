@@ -21,84 +21,84 @@ type HistoryEra = {
 const eras: HistoryEra[] = [
   {
     id: 'pre-era',
-    era: 'Pre-era',
+    era: '前の時代',
     years: '2001 - 2004',
-    title: 'The first regional heroes',
+    title: '最初の つよい人たち',
     summary:
-      'Melee starts out as a game people discover through local events and word of mouth. The early scene is smaller, rawer, and very personality-driven, with players like Ken, Isai, and Azen showing what the game can become when people push it hard.',
+      'スマブラDXは、ちいさな大会や 口コミから 広がっていきました。まだ 人は少ないですが、Ken、Isai、Azen たちが ゲームの強さを しめしました。',
     takeaway:
-      'For beginners, this is the origin story: the game was always deep, but the scene had to learn that depth together.',
-    visualTitle: 'Scene foundations',
-    visualNote: 'The first stars make Melee feel like a real competitive game instead of a party game with secrets.',
+      'ここは はじまりの話です。ゲームは ずっと深くて、みんなで その深さを 見つけていきました。',
+    visualTitle: '土台づくり',
+    visualNote: '最初の有名な人たちが、DXを 本気の対戦ゲームに しました。',
     players: ['Ken', 'Isai', 'Azen', 'PC Chris'],
     milestones: [
       {
-        label: 'Local identity',
-        detail: 'Different regions develop their own habits, rivalries, and play styles.',
+        label: '地域ごとの色',
+        detail: '場所ごとに、ちがう くせや たたかい方が できました。',
       },
       {
-        label: 'Discovery era',
-        detail: 'Players keep finding new movement and combo ideas that were never really explained by the game.',
+        label: '発見の時代',
+        detail: 'だれも教えていない うごきや コンボを、みんなで 見つけていきました。',
       },
       {
-        label: 'Tournament culture',
-        detail: 'The game starts building a real match-and-rivalry history instead of just casual play.',
+        label: '大会の文化',
+        detail: 'ただの遊びではなく、試合とライバルの 文化が 生まれました。',
       },
     ],
     accent: '#9b8bd5',
   },
   {
     id: 'dark-ages',
-    era: 'Dark Ages / Five Gods',
+    era: '暗黒期 / 五神',
     years: '2008 - 2014',
-    title: 'The scene shrinks, but the ceiling gets higher',
+    title: '人はへっても、強さはもっと上へ',
     summary:
-      'Brawl comes out, Nintendo pulls support, and the community loses mainstream momentum. But the top level becomes legendary anyway: Armada, Mew2King, Mang0, Hungrybox, and PPMD dominate so consistently that people start calling them the Five Gods.',
+      'Brawl の発売や 任天堂のサポート低下で、シーンは しばらく しずかになりました。でも その中で、Armada、Mew2King、Mang0、Hungrybox、PPMD が いつも強く、五神と よばれるようになりました。',
     takeaway:
-      'This is the era that made Melee feel mythical. Even when the outside world cooled off, the best players kept raising the standard.',
-    visualTitle: 'Five Gods',
-    visualNote: 'Elite play becomes the benchmark, and every major run gets measured against the gods.',
+      'この時代で、DXは 伝説みたいなゲームに なりました。まわりが さめても、最強の人たちは ずっと基準を 上げつづけました。',
+    visualTitle: '五神',
+    visualNote: 'トップの強さが ものさしになり、どの大会も その人たちと くらべられました。',
     players: ['Armada', 'Mew2King', 'Mang0', 'Hungrybox', 'PPMD'],
     milestones: [
       {
-        label: 'Brawl changes the spotlight',
-        detail: 'The broader Smash conversation moves away from Melee, and support gets thinner.',
+        label: 'Brawl で流れが変わる',
+        detail: 'スマブラの話は いったん Brawl に うつり、DXへの ささえは へりました。',
       },
       {
-        label: 'Five Gods rule the top',
-        detail: 'A small group of players defines what “best in the world” means for years.',
+        label: '五神が頂点',
+        detail: '少ない人たちが、何年も 「世界一」の 形を きめました。',
       },
       {
-        label: 'Mythic status',
-        detail: 'The scene gets smaller, but the story gets bigger because the rivalry at the top is so strong.',
+        label: '伝説になる',
+        detail: 'シーンは小さくなっても、上の戦いが強くて 物語は もっと大きく なりました。',
       },
     ],
     accent: '#e60012',
   },
   {
     id: 'modern',
-    era: 'Modern',
+    era: '今の時代',
     years: '2015 - now',
-    title: 'Gods can be beaten, and the scene stays alive',
+    title: '強い人は こわせる。シーンは 今も 生きている',
     summary:
-      'Leffen starts slaying gods, proving that the top tier is not untouchable. Later, Zain helps consolidate the competitive scene around a new standard of consistency, while Slippi and online play make it easier for more people to join and stay involved.',
+      'Leffen が 五神を たおし、最強は ぜったいでは ないと しめしました。そのあと Zain が 安定した強さを ひっぱり、Slippi と ネット対戦で もっと多くの人が 入りやすく なりました。',
     takeaway:
-      'This era shows why Melee still matters now: the scene is old, but it is still active, still evolving, and still open to new players.',
-    visualTitle: 'New standard',
-    visualNote: 'From Leffen to Zain, the modern scene feels both historic and current at the same time.',
-    players: ['Leffen', 'Zain', 'Slippi', 'New generation'],
+      'この時代を見ると、DX が 今も大事な理由が わかります。古いゲームでも、今も うごいていて、新しい人にも 開かれています。',
+    visualTitle: '新しい基準',
+    visualNote: 'Leffen から Zain まで、今のシーンは むかしと今が いっしょに ある感じです。',
+    players: ['Leffen', 'Zain', 'Slippi', '新しい世代'],
     milestones: [
       {
-        label: 'Leffen breaks the myth',
-        detail: 'A new champion proves the old hierarchy can be challenged.',
+        label: 'Leffen が神話をこわす',
+        detail: 'あたらしい王者が、昔の並びは 変えられると しめしました。',
       },
       {
-        label: 'Zain consolidates the top',
-        detail: 'Consistent championship-level play becomes the new expectation.',
+        label: 'Zain が頂点をまとめる',
+        detail: '安定して強い人が、新しい ふつうに なりました。',
       },
       {
-        label: 'Accessibility improves',
-        detail: 'Online tooling and local scenes make it much easier for beginners to get involved.',
+        label: '入りやすくなる',
+        detail: 'ネットの道具や 地元の場で、初心者も 入りやすく なりました。',
       },
     ],
     accent: '#a4c639',
@@ -111,30 +111,29 @@ const History: React.FC = () => {
     <div className="page page--history">
       <section className="page-hero">
         <div>
-          <p className="eyebrow">Timeline</p>
-          <h2>Why Melee still matters</h2>
+          <p className="eyebrow">年表</p>
+          <h2>なぜ DX が 今も 大事か</h2>
           <p className="page-copy">
-            If you are new, this is the fast version of the story. Three eras explain how Melee went from a local curiosity
-            to a living competitive scene that still has room for new players.
+            はじめての人向けに、3つの時代で ざっくり まとめました。小さな流れから、今も つづく 対戦の場に なるまでの話です。
           </p>
         </div>
         <div className="stat-strip">
           <div className="stat-chip">
             <span className="stat-chip__value">3</span>
-            <span className="stat-chip__label">major eras</span>
+            <span className="stat-chip__label">3つの時代</span>
           </div>
           <div className="stat-chip">
             <span className="stat-chip__value">5</span>
-            <span className="stat-chip__label">Five Gods</span>
+            <span className="stat-chip__label">五神</span>
           </div>
           <div className="stat-chip">
-            <span className="stat-chip__value">Now</span>
-            <span className="stat-chip__label">still growing</span>
+            <span className="stat-chip__value">今</span>
+            <span className="stat-chip__label">今も成長中</span>
           </div>
         </div>
       </section>
 
-      <section className="history-rail glass-panel" aria-label="History overview">
+      <section className="history-rail glass-panel" aria-label="歴史のまとめ">
         {eras.map((era, index) => (
           <a key={era.id} href={`#${era.id}`} className="history-rail__card" style={{ '--era-accent': era.accent } as React.CSSProperties}>
             <span className="history-rail__index">{String(index + 1).padStart(2, '0')}</span>
@@ -159,7 +158,7 @@ const History: React.FC = () => {
               <p className="history-era__summary">{era.summary}</p>
 
               <div className="history-era__takeaway">
-                <span>Beginner takeaway</span>
+                <span>初心者メモ</span>
                 <p>{era.takeaway}</p>
               </div>
 
@@ -176,12 +175,12 @@ const History: React.FC = () => {
             <aside className="history-era__visual">
               <p className="history-era__years">{era.years}</p>
               <div className="history-era__hero">
-                <span>{index === 1 ? 'Legendary top era' : index === 2 ? 'Modern revival' : 'Origin story'}</span>
+                <span>{index === 1 ? '伝説の時代' : index === 2 ? '今の流れ' : 'はじまり'}</span>
                 <h4>{era.visualTitle}</h4>
                 <p>{era.visualNote}</p>
               </div>
 
-              <div className="history-era__players" aria-label={`${era.era} players`}>
+              <div className="history-era__players" aria-label={`${era.era} の選手`}>
                 {era.players.map((player) => (
                   <span key={player}>{player}</span>
                 ))}

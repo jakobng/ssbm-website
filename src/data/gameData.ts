@@ -68,7 +68,7 @@ export const fighters: FighterData[] = [
       {
         name: 'リフレクター',
         note: '割り込みの核',
-        detail: '密着での暴れと反撃を兼ねる、Foxの代表的な切り返し。',
+        detail: '密着での暴れと反撃を兼ねる、フォックスの代表的な切り返し。',
         motion: 'shine',
       },
       {
@@ -99,19 +99,19 @@ export const fighters: FighterData[] = [
       {
         name: 'ブラスター',
         note: 'テンポを奪う弾',
-        detail: 'Falcoらしい牽制。相手の歩きやジャンプを先に止める。',
+        detail: 'ファルコらしいけん制。相手の歩きやジャンプを先に止める。',
         motion: 'laser',
       },
       {
         name: '下空中攻撃',
         note: 'ピラーの起点',
-        detail: 'コンボを縦に積み上げる、Falcoの象徴的な一打。',
+        detail: 'コンボを縦に積み上げる、ファルコの象徴的な一打。',
         motion: 'pillar',
       },
       {
         name: 'リフレクター',
         note: '近距離の圧',
-        detail: 'Fox同様に切り返しとして優秀で、着地際の押し返しにも使える。',
+        detail: 'フォックスと同じように切り返しとして強く、着地ぎわの押し返しにも使える。',
         motion: 'shine',
       },
       {
@@ -221,7 +221,7 @@ export const fighters: FighterData[] = [
       {
         name: '前空中攻撃',
         note: '広い判定',
-        detail: '浮遊からの差し込みと拒否に両対応の、Peachの基本技。',
+        detail: '浮遊からの差し込みと拒否に両対応の、ピーチの基本技。',
         motion: 'tipper',
       },
       {

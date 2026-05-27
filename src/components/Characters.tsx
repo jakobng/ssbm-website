@@ -14,25 +14,25 @@ const Characters: React.FC = () => {
     <div className="page page--roster">
       <section className="page-hero">
         <div>
-          <p className="eyebrow">Character Lab</p>
+          <p className="eyebrow">ファイター</p>
           <h2>ファイターを選択</h2>
           <p className="page-copy">
-            4体だった一覧を、試合の見え方が変わる8体のロスターへ拡張しました。
-            それぞれの代表技は、GIFの代わりにローカルアニメーションで再現しています。
+            4体だった一覧を、8体のロスターへ広げました。
+            それぞれの代表技は、GIFの代わりに ここで動く アニメで 見られます。
           </p>
         </div>
         <div className="stat-strip">
           <div className="stat-chip">
             <span className="stat-chip__value">{fighters.length}</span>
-            <span className="stat-chip__label">fighters</span>
+            <span className="stat-chip__label">ファイター</span>
           </div>
           <div className="stat-chip">
             <span className="stat-chip__value">{fighters.reduce((total, fighter) => total + fighter.moves.length, 0)}</span>
-            <span className="stat-chip__label">moves</span>
+            <span className="stat-chip__label">技の数</span>
           </div>
           <div className="stat-chip">
             <span className="stat-chip__value">100%</span>
-            <span className="stat-chip__label">local motion</span>
+            <span className="stat-chip__label">ローカル再生</span>
           </div>
         </div>
       </section>
@@ -79,7 +79,7 @@ const Characters: React.FC = () => {
         <section className="fighter-detail glass-panel" style={getCardStyle(selected)}>
           <div className="fighter-detail__header">
             <div className="fighter-detail__identity">
-              <p className="eyebrow">Selected Fighter</p>
+              <p className="eyebrow">選んだファイター</p>
               <h3>{selected.name}</h3>
               <p className="fighter-detail__title">{selected.title}</p>
               <p className="fighter-detail__summary">{selected.summary}</p>
@@ -98,15 +98,15 @@ const Characters: React.FC = () => {
 
           <div className="fighter-detail__meta">
             <div className="info-pill">
-              <span className="info-pill__label">style</span>
+              <span className="info-pill__label">タイプ</span>
               <span className="info-pill__value">{selected.style}</span>
             </div>
             <div className="info-pill">
-              <span className="info-pill__label">moves</span>
+              <span className="info-pill__label">技数</span>
               <span className="info-pill__value">{selected.moves.length}</span>
             </div>
             <div className="info-pill">
-              <span className="info-pill__label">accent</span>
+              <span className="info-pill__label">色</span>
               <span className="info-pill__value">{selected.color}</span>
             </div>
           </div>

@@ -4,6 +4,7 @@ import Home from './components/Home';
 import History from './components/History';
 import Techniques from './components/Techniques';
 import Characters from './components/Characters';
+import TokyoEvents from './components/TokyoEvents';
 import './App.css';
 
 const NavigationHandler: React.FC = () => {
@@ -24,6 +25,8 @@ const NavigationHandler: React.FC = () => {
         navigate('/techniques');
       } else if (key === 'c') {
         navigate('/characters');
+      } else if (key === 'e') {
+        navigate('/events');
       }
     };
 
@@ -45,15 +48,18 @@ const App: React.FC = () => {
             スマブラ<span>DX</span>
           </NavLink>
 
-          <nav className="topbar__nav" aria-label="Primary navigation">
+          <nav className="topbar__nav" aria-label="メインメニュー">
             <NavLink to="/history" className={({ isActive }) => `nav-link${isActive ? ' nav-link--active' : ''}`}>
               歴史
             </NavLink>
             <NavLink to="/techniques" className={({ isActive }) => `nav-link${isActive ? ' nav-link--active' : ''}`}>
-              共通技
+              遊び方
             </NavLink>
             <NavLink to="/characters" className={({ isActive }) => `nav-link${isActive ? ' nav-link--active' : ''}`}>
               ファイター
+            </NavLink>
+            <NavLink to="/events" className={({ isActive }) => `nav-link${isActive ? ' nav-link--active' : ''}`}>
+              遊ぶ場所
             </NavLink>
           </nav>
         </header>
@@ -64,11 +70,12 @@ const App: React.FC = () => {
             <Route path="/history" element={<History />} />
             <Route path="/techniques" element={<Techniques />} />
             <Route path="/characters" element={<Characters />} />
+            <Route path="/events" element={<TokyoEvents />} />
           </Routes>
         </main>
 
         <footer className="site-footer">
-          <p>任天堂の著作物です。非営利プロジェクト。</p>
+          <p>任天堂の著作物です。非営利の案内ページです。</p>
         </footer>
       </div>
     </Router>

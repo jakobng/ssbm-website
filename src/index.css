@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&family=DotGothic16&display=swap');
 
 :root {
-  --gc-indigo: #6b5cb1;
-  --gc-indigo-dark: #3b315f;
-  --gc-indigo-light: #9b8bd5;
-  --gc-accent-green: #a4c639;
-  --gc-accent-red: #e60012;
-  --gc-accent-orange: #ff8c00;
-  --gc-silver: #c9d0df;
-  --gc-black: #060817;
-  --gc-panel: rgba(20, 24, 48, 0.72);
-  --gc-panel-strong: rgba(11, 16, 34, 0.88);
+  --gc-indigo: #845cff;
+  --gc-indigo-dark: #2e234f;
+  --gc-indigo-light: #b89cff;
+  --gc-accent-green: #c8e34d;
+  --gc-accent-red: #ff3d4d;
+  --gc-accent-orange: #ffb347;
+  --gc-silver: #e2def0;
+  --gc-black: #05040b;
+  --gc-panel: rgba(19, 16, 39, 0.82);
+  --gc-panel-strong: rgba(10, 8, 21, 0.94);
   --font-pixel: 'DotGothic16', 'Press Start 2P', cursive;
   --font-tech: 'Orbitron', sans-serif;
 }
@@ -27,12 +27,13 @@ html {
 
 body {
   min-height: 100vh;
-  color: white;
+  color: #f7f3ff;
   font-family: var(--font-tech);
   background:
-    radial-gradient(circle at top left, rgba(107, 92, 177, 0.28), transparent 32%),
-    radial-gradient(circle at top right, rgba(255, 140, 0, 0.18), transparent 28%),
-    linear-gradient(180deg, #0a1028 0%, #04070f 100%);
+    radial-gradient(circle at 12% 10%, rgba(196, 227, 77, 0.18), transparent 18%),
+    radial-gradient(circle at 88% 8%, rgba(255, 179, 71, 0.18), transparent 20%),
+    radial-gradient(circle at 50% 110%, rgba(132, 92, 255, 0.18), transparent 30%),
+    linear-gradient(180deg, #151129 0%, #080710 58%, #040309 100%);
   overflow-x: hidden;
 }
 
@@ -62,8 +63,10 @@ h3,
 h4 {
   font-family: var(--font-pixel);
   text-transform: uppercase;
-  color: white;
-  text-shadow: 2px 2px rgba(107, 92, 177, 0.85);
+  color: #fff7ff;
+  text-shadow:
+    2px 2px rgba(46, 35, 79, 0.95),
+    0 0 10px rgba(132, 92, 255, 0.35);
 }
 
 .crt-overlay {
@@ -75,4 +78,29 @@ h4 {
     linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
     linear-gradient(90deg, rgba(255, 0, 0, 0.035), rgba(0, 255, 0, 0.015), rgba(0, 0, 118, 0.035));
   background-size: 100% 4px, 3px 100%;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04), transparent 10%, transparent 90%, rgba(255, 255, 255, 0.04)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 12%, transparent 88%, rgba(255, 255, 255, 0.04));
+  opacity: 0.22;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 12px;
+  pointer-events: none;
+  border: 1px solid rgba(255, 247, 255, 0.08);
+  border-radius: 28px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 179, 71, 0.08),
+    inset 0 0 80px rgba(132, 92, 255, 0.08);
+  z-index: 0;
 }
