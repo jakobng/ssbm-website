@@ -1,93 +1,118 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { fighters } from '../data/gameData';
 
 const Home: React.FC = () => {
-  const featuredFighters = fighters.slice(0, 4);
-  const totalMoves = fighters.reduce((total, fighter) => total + fighter.moves.length, 0);
-
   return (
     <div className="page page--home">
       <section className="hero-shell">
         <div className="hero-copy">
-          <p className="eyebrow">Smash Bros. Melee Field Guide</p>
-          <h1>大乱闘スマッシュブラザーズ DX</h1>
+          <p className="eyebrow">Beginner Guide</p>
+          <h1>Learn Melee without getting lost</h1>
           <p className="hero-copy__lede">
-            ただの紹介サイトではなく、キャラの個性と実戦で使う動きを一目で掴める
-            フィールドガイドに更新しました。
+            Start with the basics, find a place to play, and understand the history that made the scene what it is.
+            This site is built to help beginners learn the game, get involved, and figure out why Melee still matters.
           </p>
 
           <div className="hero-actions">
-            <Link to="/characters" className="gc-button a-button">
-              ファイターを見る
+            <Link to="/techniques" className="gc-button a-button">
+              How to play
             </Link>
-            <Link to="/techniques" className="gc-button b-button">
-              テクニックを見る
+            <Link to="/events" className="gc-button b-button">
+              Where to play
+            </Link>
+            <Link to="/history" className="gc-button">
+              Why to play
             </Link>
           </div>
 
           <div className="stat-strip stat-strip--hero">
             <div className="stat-chip">
-              <span className="stat-chip__value">{fighters.length}</span>
-              <span className="stat-chip__label">fighters</span>
+              <span className="stat-chip__value">3</span>
+              <span className="stat-chip__label">core sections</span>
             </div>
             <div className="stat-chip">
-              <span className="stat-chip__value">{totalMoves}</span>
-              <span className="stat-chip__label">signature moves</span>
+              <span className="stat-chip__value">Slippi</span>
+              <span className="stat-chip__label">online play</span>
             </div>
             <div className="stat-chip">
-              <span className="stat-chip__value">8</span>
-              <span className="stat-chip__label">core movement drills</span>
+              <span className="stat-chip__value">Tokyo</span>
+              <span className="stat-chip__label">offline scene</span>
             </div>
           </div>
         </div>
 
         <aside className="hero-panel glass-panel">
-          <p className="hero-panel__label">featured roster</p>
-          <div className="featured-grid">
-            {featuredFighters.map((fighter) => (
-              <div key={fighter.id} className="featured-card" style={{ '--fighter-accent': fighter.color } as React.CSSProperties}>
-                <div className="featured-card__portrait">
-                  {fighter.image ? (
-                    <img src={fighter.image} alt={fighter.name} />
-                  ) : (
-                    <span>{fighter.emblem}</span>
-                  )}
-                </div>
-                <div>
-                  <h3>{fighter.name}</h3>
-                  <p>{fighter.title}</p>
-                </div>
+          <p className="hero-panel__label">start here</p>
+          <div className="guide-steps">
+            <div className="guide-step">
+              <span className="guide-step__index">01</span>
+              <div>
+                <h3>Learn the game</h3>
+                <p>Movement, shield, ledge, and the beginner tech that changes everything.</p>
               </div>
-            ))}
+            </div>
+            <div className="guide-step">
+              <span className="guide-step__index">02</span>
+              <div>
+                <h3>Find a scene</h3>
+                <p>Use Slippi online or jump into Tokyo venues and tournaments when you want offline games.</p>
+              </div>
+            </div>
+            <div className="guide-step">
+              <span className="guide-step__index">03</span>
+              <div>
+                <h3>Understand the why</h3>
+                <p>The history explains why Melee still feels alive, competitive, and worth learning now.</p>
+              </div>
+            </div>
           </div>
         </aside>
       </section>
 
       <section className="home-grid">
         <div className="glass-panel home-card">
-          <p className="eyebrow">What changed</p>
-          <h3>より多くのキャラ、より多くの動き</h3>
+          <p className="eyebrow">How to play</p>
+          <h3>Start with the basics</h3>
           <p>
-            4体だけの一覧から、8体のロスターに拡張しました。各キャラは4つの代表技を持ち、
-            それぞれに合わせたミニアニメーションを再生します。
+            Learn how the game flows, what movement looks like, and the beginner techniques that show up in every match.
           </p>
+          <Link to="/techniques" className="card-link">
+            Go to how to play
+          </Link>
         </div>
         <div className="glass-panel home-card">
-          <p className="eyebrow">Preview style</p>
-          <h3>GIFより正確で統一感のある表現</h3>
+          <p className="eyebrow">Where to play</p>
+          <h3>Slippi and the Tokyo scene</h3>
           <p>
-            既存のGIFが合わない場合でも、ローカルで描く演出なら技ごとの形を正確に保てます。
-            これは見た目の統一にも、読みやすさにも効きます。
+            Play online right away with Slippi, or find local venues and tournaments in Tokyo when you want real bracket energy.
           </p>
+          <Link to="/events" className="card-link">
+            Go to where to play
+          </Link>
         </div>
         <div className="glass-panel home-card">
-          <p className="eyebrow">Explore</p>
-          <h3>キャラから入って、テクニックに降りる</h3>
+          <p className="eyebrow">Why to play</p>
+          <h3>Competition, identity, and history</h3>
           <p>
-            上から下へ読む導線にしてあるので、好きなファイターを見つけてから共通技へ戻る流れが自然です。
+            If you like fighting games, Melee gives you a deep competitive scene and a place to grow into a new version of yourself.
+          </p>
+          <Link to="/history" className="card-link">
+            Go to why to play
+          </Link>
+        </div>
+      </section>
+
+      <section className="home-footer glass-panel">
+        <div>
+          <p className="eyebrow">Optional deep dive</p>
+          <h3>Characters and matchup culture</h3>
+          <p>
+            Once the basics make sense, the fighter roster page is a good next stop for seeing how different characters shape the game.
           </p>
         </div>
+        <Link to="/characters" className="gc-button">
+          View fighters
+        </Link>
       </section>
     </div>
   );
