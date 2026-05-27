@@ -1,0 +1,62 @@
+[
+  {
+    "id": "auto-fallback-tokyo-0",
+    "title": "Tokyo Melee Meetup",
+    "startAt": "2026-05-24T03:46:31.715Z",
+    "endAt": "2026-05-24T06:46:31.715Z",
+    "venue": "Shinjuku Community Center",
+    "address": "Shinjuku, Tokyo",
+    "prefecture": "Tokyo",
+    "latitude": 35.6938,
+    "longitude": 139.7034,
+    "type": "tournament",
+    "sourceUrl": "https://www.start.gg/",
+    "sourceName": "start.gg (fallback seed)",
+    "lastVerifiedAt": "2026-05-21T03:46:31.715Z"
+  },
+  {
+    "id": "auto-fallback-kanagawa-1",
+    "title": "Kanagawa Melee Meetup",
+    "startAt": "2026-05-25T03:46:31.715Z",
+    "endAt": "2026-05-25T06:46:31.715Z",
+    "venue": "Yokohama Community Space",
+    "address": "Yokohama, Kanagawa",
+    "prefecture": "Kanagawa",
+    "latitude": 35.4437,
+    "longitude": 139.638,
+    "type": "meetup",
+    "sourceUrl": "https://www.start.gg/",
+    "sourceName": "start.gg (fallback seed)",
+    "lastVerifiedAt": "2026-05-21T03:46:31.715Z"
+  },
+  {
+    "id": "auto-fallback-saitama-2",
+    "title": "Saitama Melee Meetup",
+    "startAt": "2026-05-26T03:46:31.715Z",
+    "endAt": "2026-05-26T06:46:31.715Z",
+    "venue": "Omiya Hall",
+    "address": "Omiya, Saitama",
+    "prefecture": "Saitama",
+    "latitude": 35.9063,
+    "longitude": 139.6232,
+    "type": "tournament",
+    "sourceUrl": "https://www.start.gg/",
+    "sourceName": "start.gg (fallback seed)",
+    "lastVerifiedAt": "2026-05-21T03:46:31.715Z"
+  },
+  {
+    "id": "auto-fallback-chiba-3",
+    "title": "Chiba Melee Meetup",
+    "startAt": "2026-05-27T03:46:31.715Z",
+    "endAt": "2026-05-27T06:46:31.715Z",
+    "venue": "Chiba Culture Center",
+    "address": "Chiba, Chiba",
+    "prefecture": "Chiba",
+    "latitude": 35.6074,
+    "longitude": 140.1065,
+    "type": "meetup",
+    "sourceUrl": "https://www.start.gg/",
+    "sourceName": "start.gg (fallback seed)",
+    "lastVerifiedAt": "2026-05-21T03:46:31.715Z"
+  }
+]
