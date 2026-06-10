@@ -2,8 +2,8 @@
   {
     "id": "auto-fallback-tokyo-0",
     "title": "Tokyo Melee Meetup",
-    "startAt": "2026-05-24T03:46:31.715Z",
-    "endAt": "2026-05-24T06:46:31.715Z",
+    "startAt": "2026-06-13T11:35:24.855Z",
+    "endAt": "2026-06-13T14:35:24.855Z",
     "venue": "Shinjuku Community Center",
     "address": "Shinjuku, Tokyo",
     "prefecture": "Tokyo",
@@ -12,13 +12,13 @@
     "type": "tournament",
     "sourceUrl": "https://www.start.gg/",
     "sourceName": "start.gg (fallback seed)",
-    "lastVerifiedAt": "2026-05-21T03:46:31.715Z"
+    "lastVerifiedAt": "2026-06-10T11:35:24.860Z"
   },
   {
     "id": "auto-fallback-kanagawa-1",
     "title": "Kanagawa Melee Meetup",
-    "startAt": "2026-05-25T03:46:31.715Z",
-    "endAt": "2026-05-25T06:46:31.715Z",
+    "startAt": "2026-06-14T11:35:24.855Z",
+    "endAt": "2026-06-14T14:35:24.855Z",
     "venue": "Yokohama Community Space",
     "address": "Yokohama, Kanagawa",
     "prefecture": "Kanagawa",
@@ -27,13 +27,13 @@
     "type": "meetup",
     "sourceUrl": "https://www.start.gg/",
     "sourceName": "start.gg (fallback seed)",
-    "lastVerifiedAt": "2026-05-21T03:46:31.715Z"
+    "lastVerifiedAt": "2026-06-10T11:35:24.860Z"
   },
   {
     "id": "auto-fallback-saitama-2",
     "title": "Saitama Melee Meetup",
-    "startAt": "2026-05-26T03:46:31.715Z",
-    "endAt": "2026-05-26T06:46:31.715Z",
+    "startAt": "2026-06-15T11:35:24.855Z",
+    "endAt": "2026-06-15T14:35:24.855Z",
     "venue": "Omiya Hall",
     "address": "Omiya, Saitama",
     "prefecture": "Saitama",
@@ -42,13 +42,13 @@
     "type": "tournament",
     "sourceUrl": "https://www.start.gg/",
     "sourceName": "start.gg (fallback seed)",
-    "lastVerifiedAt": "2026-05-21T03:46:31.715Z"
+    "lastVerifiedAt": "2026-06-10T11:35:24.860Z"
   },
   {
     "id": "auto-fallback-chiba-3",
     "title": "Chiba Melee Meetup",
-    "startAt": "2026-05-27T03:46:31.715Z",
-    "endAt": "2026-05-27T06:46:31.715Z",
+    "startAt": "2026-06-16T11:35:24.855Z",
+    "endAt": "2026-06-16T14:35:24.855Z",
     "venue": "Chiba Culture Center",
     "address": "Chiba, Chiba",
     "prefecture": "Chiba",
@@ -57,6 +57,6 @@
     "type": "meetup",
     "sourceUrl": "https://www.start.gg/",
     "sourceName": "start.gg (fallback seed)",
-    "lastVerifiedAt": "2026-05-21T03:46:31.715Z"
+    "lastVerifiedAt": "2026-06-10T11:35:24.860Z"
   }
 ]

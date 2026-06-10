@@ -44,28 +44,34 @@ const TokyoEvents: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'tournament' | 'meetup'>('all');
   const [now] = useState(() => Date.now());
 
-  const upcomingEvents = useMemo(() => {
+  const allEvents = useMemo(() => {
     return (eventsData as EventRecord[])
-      .filter((event) => new Date(event.startAt).getTime() >= now)
       .sort((a, b) => new Date(a.startAt).getTime() - new Date(b.startAt).getTime());
-  }, [now]);
+  }, []);
+
+  const upcomingEvents = useMemo(() => {
+    return allEvents.filter((event) => new Date(event.startAt).getTime() >= now);
+  }, [allEvents, now]);
+
+  const hasUpcomingEvents = upcomingEvents.length > 0;
+  const activeEvents = hasUpcomingEvents ? upcomingEvents : allEvents;
 
   const visibleEvents = useMemo(
-    () => upcomingEvents.filter((event) => filter === 'all' || event.type === filter),
-    [filter, upcomingEvents]
+    () => activeEvents.filter((event) => filter === 'all' || event.type === filter),
+    [activeEvents, filter]
   );
 
-  const tournamentCount = upcomingEvents.filter((event) => event.type === 'tournament').length;
-  const meetupCount = upcomingEvents.filter((event) => event.type === 'meetup').length;
+  const tournamentCount = activeEvents.filter((event) => event.type === 'tournament').length;
+  const meetupCount = activeEvents.filter((event) => event.type === 'meetup').length;
   const latestVerification = useMemo(() => {
-    return upcomingEvents.reduce<string | undefined>((latest, event) => {
+    return activeEvents.reduce<string | undefined>((latest, event) => {
       if (!latest) {
         return event.lastVerifiedAt;
       }
 
       return new Date(event.lastVerifiedAt).getTime() > new Date(latest).getTime() ? event.lastVerifiedAt : latest;
     }, undefined);
-  }, [upcomingEvents]);
+  }, [activeEvents]);
 
   return (
     <div className="page page--events">
@@ -116,10 +122,10 @@ const TokyoEvents: React.FC = () => {
       <div className="events-layout">
         <section className="event-map-panel glass-panel">
           <div className="event-panel__header">
-            <div>
-              <p className="eyebrow">地図</p>
-              <h3>首都圏の開催位置</h3>
-            </div>
+          <div>
+            <p className="eyebrow">地図</p>
+            <h3>首都圏の開催位置</h3>
+          </div>
             <div className="event-legend">
               <span>
                 <i className="event-legend__dot event-legend__dot--tournament" />
@@ -158,7 +164,11 @@ const TokyoEvents: React.FC = () => {
           </div>
 
           <p className="event-panel__note">
-            {latestVerification ? `最新確認: ${formatWindow(latestVerification)}` : 'まだ確認できたイベントはありません。'}
+            {latestVerification
+              ? hasUpcomingEvents
+                ? `最新確認: ${formatWindow(latestVerification)}`
+                : `今後の予定がないため、最後に確認できた記録を表示中: ${formatWindow(latestVerification)}`
+              : 'まだ確認できたイベントはありません。'}
           </p>
         </section>
 

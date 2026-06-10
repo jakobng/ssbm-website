@@ -1,0 +1,22 @@
+name: Update Tokyo Events
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-events:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Generate events data
+        run: node scripts/events/update-tokyo-events.mjs
+      - name: Commit updated data
+        uses: stefanzweifel/git-auto-commit-action@v6
+        with:
+          commit_message: 'chore: auto-update Greater Tokyo events data'
+          file_pattern: src/data/tokyoEvents.json
