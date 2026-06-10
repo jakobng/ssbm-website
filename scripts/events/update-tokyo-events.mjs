@@ -1,33 +1,218 @@
 import fs from 'node:fs/promises';
 
 const OUTPUT = new URL('../../src/data/tokyoEvents.json', import.meta.url);
+const START_GG_URL = 'https://www.start.gg/api/-/gql-public';
+const CLIENT_VERSION = '20';
+const GAME_ID = '1';
+const TOKYO_COORDS = '35.6812,139.7671';
+const SEARCH_RADIUS = '120km';
+const PER_PAGE = 25;
+const MAX_PAGES = 4;
+const RECENT_PAST_DAYS = 30;
 
-const GREATER_TOKYO = [
-  { name: 'Shinjuku Community Center', prefecture: 'Tokyo', latitude: 35.6938, longitude: 139.7034, address: 'Shinjuku, Tokyo' },
-  { name: 'Yokohama Community Space', prefecture: 'Kanagawa', latitude: 35.4437, longitude: 139.638, address: 'Yokohama, Kanagawa' },
-  { name: 'Omiya Hall', prefecture: 'Saitama', latitude: 35.9063, longitude: 139.6232, address: 'Omiya, Saitama' },
-  { name: 'Chiba Culture Center', prefecture: 'Chiba', latitude: 35.6074, longitude: 140.1065, address: 'Chiba, Chiba' }
-];
+const toIso = (seconds) => new Date(seconds * 1000).toISOString();
 
-const buildFallbackEvents = () => {
-  const now = Date.now();
-  return GREATER_TOKYO.map((venue, index) => ({
-    id: `auto-fallback-${venue.prefecture.toLowerCase()}-${index}`,
-    title: `${venue.prefecture} Melee Meetup`,
-    startAt: new Date(now + (index + 3) * 86400000).toISOString(),
-    endAt: new Date(now + (index + 3) * 86400000 + 3 * 3600000).toISOString(),
-    venue: venue.name,
-    address: venue.address,
-    prefecture: venue.prefecture,
-    latitude: venue.latitude,
-    longitude: venue.longitude,
-    type: index % 2 === 0 ? 'tournament' : 'meetup',
-    sourceUrl: 'https://www.start.gg/',
-    sourceName: 'start.gg (fallback seed)',
-    lastVerifiedAt: new Date().toISOString()
-  }));
+const normalizePrefecture = (tournament) => {
+  const haystack = [
+    tournament.addrState,
+    tournament.city,
+    tournament.venueName,
+    tournament.venueAddress,
+    tournament.fullAddress,
+    tournament.locationDisplayName,
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  if (haystack.includes('東京')) return 'Tokyo';
+  if (haystack.includes('神奈川')) return 'Kanagawa';
+  if (haystack.includes('埼玉')) return 'Saitama';
+  if (haystack.includes('千葉')) return 'Chiba';
+
+  if (haystack.includes('Tokyo')) return 'Tokyo';
+  if (haystack.includes('Kanagawa')) return 'Kanagawa';
+  if (haystack.includes('Saitama')) return 'Saitama';
+  if (haystack.includes('Chiba')) return 'Chiba';
+
+  return null;
 };
 
-const events = buildFallbackEvents();
-await fs.writeFile(OUTPUT, JSON.stringify(events, null, 2) + '\n');
-console.log(`wrote ${events.length} events -> src/data/tokyoEvents.json`);
+const pickMeleeEvent = (events = []) => {
+  const meleeEvents = events.filter((event) => event?.videogame?.id === 1);
+
+  if (meleeEvents.length === 0) {
+    return null;
+  }
+
+  const scoreEvent = (event) => {
+    const name = event.name.toLowerCase();
+    if (name.includes('singles') || name.includes('シングル')) return 0;
+    if (name.includes('doubles') || name.includes('ダブル')) return 1;
+    return 2;
+  };
+
+  return [...meleeEvents].sort((a, b) => scoreEvent(a) - scoreEvent(b))[0];
+};
+
+const graphQL = async (query, variables) => {
+  const response = await fetch(START_GG_URL, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'client-version': CLIENT_VERSION,
+    },
+    body: JSON.stringify({ query, variables }),
+  });
+
+  const payload = await response.json();
+
+  if (!response.ok || payload.errors?.length) {
+    const message = payload.errors?.[0]?.message || payload.message || `start.gg request failed (${response.status})`;
+    throw new Error(message);
+  }
+
+  return payload.data;
+};
+
+const fetchTournamentPage = async ({ page, upcoming }) => {
+  const now = Math.floor(Date.now() / 1000);
+  const variables = {
+    page,
+    perPage: PER_PAGE,
+    coords: TOKYO_COORDS,
+    distance: SEARCH_RADIUS,
+    afterDate: upcoming ? null : now - RECENT_PAST_DAYS * 24 * 60 * 60,
+    beforeDate: upcoming ? null : now,
+  };
+
+  const query = `
+    query TokyoEvents($page: Int!, $perPage: Int!, $coords: String!, $distance: String!, $afterDate: Timestamp, $beforeDate: Timestamp) {
+      tournaments(query: {
+        page: $page,
+        perPage: $perPage,
+        filter: {
+          countryCode: "JP",
+          published: true,
+          publiclySearchable: true,
+          upcoming: ${upcoming},
+          location: { distanceFrom: $coords, distance: $distance }
+          afterDate: $afterDate
+          beforeDate: $beforeDate
+        }
+      }) {
+        nodes {
+          id
+          name
+          slug
+          city
+          addrState
+          venueName
+          venueAddress
+          fullAddress
+          locationDisplayName
+          lat
+          lng
+          startAt
+          endAt
+          events {
+            id
+            name
+            slug
+            videogame {
+              id
+              displayName
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const data = await graphQL(query, variables);
+  return data.tournaments.nodes;
+};
+
+const gatherTournaments = async (upcoming) => {
+  const collected = [];
+  const seenTournamentIds = new Set();
+
+  for (let page = 1; page <= MAX_PAGES; page += 1) {
+    const nodes = await fetchTournamentPage({ page, upcoming });
+
+    if (nodes.length === 0) {
+      break;
+    }
+
+    for (const tournament of nodes) {
+      if (seenTournamentIds.has(String(tournament.id))) {
+        continue;
+      }
+
+      seenTournamentIds.add(String(tournament.id));
+      collected.push(tournament);
+    }
+
+    if (nodes.length < PER_PAGE) {
+      break;
+    }
+  }
+
+  return collected;
+};
+
+const tournamentToRecord = (tournament) => {
+  const meleeEvent = pickMeleeEvent(tournament.events);
+
+  if (!meleeEvent) {
+    return null;
+  }
+
+  const venue = tournament.venueName || tournament.locationDisplayName || tournament.city || tournament.addrState || '東京';
+  const address = tournament.venueAddress || tournament.fullAddress || tournament.locationDisplayName || undefined;
+
+  const prefecture = normalizePrefecture(tournament);
+
+  if (!prefecture) {
+    return null;
+  }
+
+  return {
+    id: `startgg-${tournament.id}-${meleeEvent.id}`,
+    title: meleeEvent.name,
+    tournamentName: tournament.name,
+    startAt: toIso(tournament.startAt),
+    endAt: tournament.endAt ? toIso(tournament.endAt) : undefined,
+    venue,
+    address,
+    prefecture,
+    latitude: tournament.lat,
+    longitude: tournament.lng,
+    type: 'tournament',
+    sourceUrl: `https://www.start.gg/${meleeEvent.slug}`,
+    sourceName: 'start.gg',
+    lastVerifiedAt: new Date().toISOString(),
+  };
+};
+
+const main = async () => {
+  const upcomingTournaments = await gatherTournaments(true);
+  let sourceTournaments = upcomingTournaments;
+
+  if (sourceTournaments.length === 0) {
+    sourceTournaments = await gatherTournaments(false);
+  }
+
+  const records = sourceTournaments
+    .map(tournamentToRecord)
+    .filter(Boolean)
+    .sort((a, b) => new Date(a.startAt).getTime() - new Date(b.startAt).getTime());
+
+  if (records.length === 0) {
+    throw new Error('No Tokyo-area Melee events were found on start.gg.');
+  }
+
+  await fs.writeFile(OUTPUT, `${JSON.stringify(records, null, 2)}\n`);
+  console.log(`wrote ${records.length} events -> src/data/tokyoEvents.json`);
+};
+
+await main();

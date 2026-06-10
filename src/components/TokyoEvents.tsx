@@ -61,8 +61,7 @@ const TokyoEvents: React.FC = () => {
     [activeEvents, filter]
   );
 
-  const tournamentCount = activeEvents.filter((event) => event.type === 'tournament').length;
-  const meetupCount = activeEvents.filter((event) => event.type === 'meetup').length;
+  const venueCount = new Set(activeEvents.map((event) => event.venue)).size;
   const latestVerification = useMemo(() => {
     return activeEvents.reduce<string | undefined>((latest, event) => {
       if (!latest) {
@@ -81,22 +80,22 @@ const TokyoEvents: React.FC = () => {
           <h2>首都圏イベント</h2>
           <p className="page-copy">
             東京・神奈川・埼玉・千葉のスマブラDXイベントを、地図と一覧で見られるページです。
-            12時間ごとに更新して、場所と種類が すぐわかるようにしています。
+            start.gg から毎日まとめて、場所とリンクが すぐわかるようにしています。
           </p>
         </div>
 
         <div className="stat-strip">
           <div className="stat-chip">
-            <span className="stat-chip__value">{upcomingEvents.length}</span>
-            <span className="stat-chip__label">今後の予定</span>
+            <span className="stat-chip__value">{activeEvents.length}</span>
+            <span className="stat-chip__label">掲載中</span>
           </div>
           <div className="stat-chip">
-            <span className="stat-chip__value">{tournamentCount}</span>
-            <span className="stat-chip__label">大会</span>
+            <span className="stat-chip__value">{venueCount}</span>
+            <span className="stat-chip__label">会場</span>
           </div>
           <div className="stat-chip">
-            <span className="stat-chip__value">{meetupCount}</span>
-            <span className="stat-chip__label">交流会</span>
+            <span className="stat-chip__value">start.gg</span>
+            <span className="stat-chip__label">元ソース</span>
           </div>
         </div>
       </section>
@@ -194,6 +193,7 @@ const TokyoEvents: React.FC = () => {
                     <div>
                       <p className="event-card__prefecture">{prefectureLabels[event.prefecture]}</p>
                       <h4>{event.title}</h4>
+                      <p className="event-card__tournament">{event.tournamentName}</p>
                     </div>
                     <span className={`event-badge event-badge--${event.type}`}>{typeLabels[event.type]}</span>
                   </div>

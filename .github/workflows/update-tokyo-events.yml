@@ -2,7 +2,7 @@ name: Update Tokyo Events
 
 on:
   schedule:
-    - cron: '0 */12 * * *'
+    - cron: '0 21 * * *'
   workflow_dispatch:
 
 jobs:

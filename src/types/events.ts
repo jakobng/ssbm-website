@@ -1,6 +1,7 @@
 export type EventRecord = {
   id: string;
   title: string;
+  tournamentName: string;
   startAt: string;
   endAt?: string;
   venue: string;

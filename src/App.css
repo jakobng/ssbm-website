@@ -2259,6 +2259,13 @@
   color: var(--gc-accent-green);
 }
 
+.event-card__tournament {
+  color: var(--gc-silver);
+  line-height: 1.5;
+  font-size: 0.8rem;
+  margin-top: 6px;
+}
+
 .event-badge {
   display: inline-flex;
   align-items: center;
