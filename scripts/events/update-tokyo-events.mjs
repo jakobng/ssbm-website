@@ -7,8 +7,7 @@ const GAME_ID = '1';
 const TOKYO_COORDS = '35.6812,139.7671';
 const SEARCH_RADIUS = '120km';
 const PER_PAGE = 25;
-const MAX_PAGES = 4;
-const RECENT_PAST_DAYS = 30;
+const MAX_PAGES = 6;
 
 const toIso = (seconds) => new Date(seconds * 1000).toISOString();
 
@@ -74,19 +73,16 @@ const graphQL = async (query, variables) => {
   return payload.data;
 };
 
-const fetchTournamentPage = async ({ page, upcoming }) => {
-  const now = Math.floor(Date.now() / 1000);
+const fetchTournamentPage = async ({ page }) => {
   const variables = {
     page,
     perPage: PER_PAGE,
     coords: TOKYO_COORDS,
     distance: SEARCH_RADIUS,
-    afterDate: upcoming ? null : now - RECENT_PAST_DAYS * 24 * 60 * 60,
-    beforeDate: upcoming ? null : now,
   };
 
   const query = `
-    query TokyoEvents($page: Int!, $perPage: Int!, $coords: String!, $distance: String!, $afterDate: Timestamp, $beforeDate: Timestamp) {
+    query TokyoEvents($page: Int!, $perPage: Int!, $coords: String!, $distance: String!) {
       tournaments(query: {
         page: $page,
         perPage: $perPage,
@@ -94,10 +90,9 @@ const fetchTournamentPage = async ({ page, upcoming }) => {
           countryCode: "JP",
           published: true,
           publiclySearchable: true,
-          upcoming: ${upcoming},
+          upcoming: true,
+          videogameIds: [${GAME_ID}],
           location: { distanceFrom: $coords, distance: $distance }
-          afterDate: $afterDate
-          beforeDate: $beforeDate
         }
       }) {
         nodes {
@@ -132,12 +127,12 @@ const fetchTournamentPage = async ({ page, upcoming }) => {
   return data.tournaments.nodes;
 };
 
-const gatherTournaments = async (upcoming) => {
+const gatherTournaments = async () => {
   const collected = [];
   const seenTournamentIds = new Set();
 
   for (let page = 1; page <= MAX_PAGES; page += 1) {
-    const nodes = await fetchTournamentPage({ page, upcoming });
+    const nodes = await fetchTournamentPage({ page });
 
     if (nodes.length === 0) {
       break;
@@ -195,21 +190,10 @@ const tournamentToRecord = (tournament) => {
 };
 
 const main = async () => {
-  const upcomingTournaments = await gatherTournaments(true);
-  let sourceTournaments = upcomingTournaments;
-
-  if (sourceTournaments.length === 0) {
-    sourceTournaments = await gatherTournaments(false);
-  }
-
-  const records = sourceTournaments
+  const records = (await gatherTournaments())
     .map(tournamentToRecord)
     .filter(Boolean)
     .sort((a, b) => new Date(a.startAt).getTime() - new Date(b.startAt).getTime());
-
-  if (records.length === 0) {
-    throw new Error('No Tokyo-area Melee events were found on start.gg.');
-  }
 
   await fs.writeFile(OUTPUT, `${JSON.stringify(records, null, 2)}\n`);
   console.log(`wrote ${records.length} events -> src/data/tokyoEvents.json`);

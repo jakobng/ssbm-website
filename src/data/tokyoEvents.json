@@ -1,50 +1,18 @@
 [
   {
-    "id": "startgg-893793-1587383",
+    "id": "startgg-919380-1640298",
     "title": "Melee Singles",
-    "tournamentName": "第50.5回クロブラ10周年プレ大会/神奈川スマブラ対戦会クロブラ/Kurobra50.5",
-    "startAt": "2026-05-15T10:00:00.000Z",
-    "endAt": "2026-05-15T12:30:00.000Z",
+    "tournamentName": "第52回クロブラ/神奈川スマブラ対戦会クロブラ/Kurobra52",
+    "startAt": "2026-07-18T00:00:00.000Z",
+    "endAt": "2026-07-18T10:00:00.000Z",
     "venue": "おださがプラザ",
     "address": "日本、〒231-8575 神奈川県横浜市中区万代町２丁目４−７",
     "prefecture": "Kanagawa",
     "latitude": 35.4419858,
     "longitude": 139.6349043,
     "type": "tournament",
-    "sourceUrl": "https://www.start.gg/tournament/50-5-10-kurobra50-5/event/melee-singles",
+    "sourceUrl": "https://www.start.gg/tournament/52-kurobra52/event/melee-singles",
     "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-06-10T11:45:34.710Z"
-  },
-  {
-    "id": "startgg-893764-1587312",
-    "title": "Melee Singles",
-    "tournamentName": "第51回クロブラ10周年記念大会/神奈川スマブラ対戦会クロブラ/Kurobra51",
-    "startAt": "2026-05-16T00:00:00.000Z",
-    "endAt": "2026-05-16T11:00:00.000Z",
-    "venue": "おださがプラザ",
-    "address": "日本、〒231-8575 神奈川県横浜市中区万代町２丁目４−７",
-    "prefecture": "Kanagawa",
-    "latitude": 35.4419858,
-    "longitude": 139.6349043,
-    "type": "tournament",
-    "sourceUrl": "https://www.start.gg/tournament/51-10-kurobra51/event/melee-singles",
-    "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-06-10T11:45:34.710Z"
-  },
-  {
-    "id": "startgg-907051-1615308",
-    "title": "Melee Singles (1v1)",
-    "tournamentName": "Shuuten Tokyo #27（終点東京）",
-    "startAt": "2026-06-06T03:00:00.000Z",
-    "endAt": "2026-06-06T09:00:00.000Z",
-    "venue": "JP",
-    "address": "Tokyo, Japan",
-    "prefecture": "Tokyo",
-    "latitude": 35.6764225,
-    "longitude": 139.650027,
-    "type": "tournament",
-    "sourceUrl": "https://www.start.gg/tournament/shuuten-tokyo-27/event/melee-singles-1v1",
-    "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-06-10T11:45:34.710Z"
+    "lastVerifiedAt": "2026-06-17T06:03:27.929Z"
   }
 ]

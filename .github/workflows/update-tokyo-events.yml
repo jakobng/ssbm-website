@@ -2,8 +2,11 @@ name: Update Tokyo Events
 
 on:
   schedule:
-    - cron: '0 21 * * *'
+    - cron: '0 21 */3 * *'
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   update-events:

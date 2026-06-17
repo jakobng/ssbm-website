@@ -16,7 +16,54 @@ const timeFormatter = new Intl.DateTimeFormat('ja-JP', {
   minute: '2-digit',
 });
 
-const bounds = { minLat: 35.3, maxLat: 36.1, minLng: 139.3, maxLng: 140.3 };
+const mapCenter = { latitude: 35.6812, longitude: 139.7671 };
+const mapZoom = 10;
+const mapTileSize = 256;
+const mapTileOffsets = [-2, -1, 0, 1, 2];
+const mapPixelSize = mapTileSize * mapTileOffsets.length;
+
+const lonLatToWorldPixel = (longitude: number, latitude: number, zoom: number) => {
+  const scale = mapTileSize * 2 ** zoom;
+  const sinLatitude = Math.sin((latitude * Math.PI) / 180);
+
+  return {
+    x: ((longitude + 180) / 360) * scale,
+    y: (0.5 - Math.log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI)) * scale,
+  };
+};
+
+const mapCenterPixel = lonLatToWorldPixel(mapCenter.longitude, mapCenter.latitude, mapZoom);
+const mapStartPixel = {
+  x: mapCenterPixel.x - mapPixelSize / 2,
+  y: mapCenterPixel.y - mapPixelSize / 2,
+};
+const mapCenterTile = {
+  x: Math.floor(mapCenterPixel.x / mapTileSize),
+  y: Math.floor(mapCenterPixel.y / mapTileSize),
+};
+
+const mapTiles = mapTileOffsets.flatMap((yOffset) =>
+  mapTileOffsets.map((xOffset) => {
+    const x = mapCenterTile.x + xOffset;
+    const y = mapCenterTile.y + yOffset;
+
+    return {
+      key: `${x}-${y}`,
+      src: `https://tile.openstreetmap.org/${mapZoom}/${x}/${y}.png`,
+      left: ((x * mapTileSize - mapStartPixel.x) / mapPixelSize) * 100,
+      top: ((y * mapTileSize - mapStartPixel.y) / mapPixelSize) * 100,
+    };
+  })
+);
+
+const getMapPosition = (event: EventRecord) => {
+  const eventPixel = lonLatToWorldPixel(event.longitude, event.latitude, mapZoom);
+
+  return {
+    x: ((eventPixel.x - mapStartPixel.x) / mapPixelSize) * 100,
+    y: ((eventPixel.y - mapStartPixel.y) / mapPixelSize) * 100,
+  };
+};
 const typeLabels: Record<EventRecord['type'], string> = {
   tournament: '大会',
   meetup: '交流会',
@@ -54,7 +101,7 @@ const TokyoEvents: React.FC = () => {
   }, [allEvents, now]);
 
   const hasUpcomingEvents = upcomingEvents.length > 0;
-  const activeEvents = hasUpcomingEvents ? upcomingEvents : allEvents;
+  const activeEvents = upcomingEvents;
 
   const visibleEvents = useMemo(
     () => activeEvents.filter((event) => filter === 'all' || event.type === filter),
@@ -72,6 +119,16 @@ const TokyoEvents: React.FC = () => {
     }, undefined);
   }, [activeEvents]);
 
+  const latestDataVerification = useMemo(() => {
+    return allEvents.reduce<string | undefined>((latest, event) => {
+      if (!latest) {
+        return event.lastVerifiedAt;
+      }
+
+      return new Date(event.lastVerifiedAt).getTime() > new Date(latest).getTime() ? event.lastVerifiedAt : latest;
+    }, undefined);
+  }, [allEvents]);
+
   return (
     <div className="page page--events">
       <section className="page-hero">
@@ -80,7 +137,7 @@ const TokyoEvents: React.FC = () => {
           <h2>首都圏イベント</h2>
           <p className="page-copy">
             東京・神奈川・埼玉・千葉のスマブラDXイベントを、地図と一覧で見られるページです。
-            start.gg から毎日まとめて、場所とリンクが すぐわかるようにしています。
+            start.gg から3日に1回まとめて、場所とリンクがすぐわかるようにしています。
           </p>
         </div>
 
@@ -94,8 +151,8 @@ const TokyoEvents: React.FC = () => {
             <span className="stat-chip__label">会場</span>
           </div>
           <div className="stat-chip">
-            <span className="stat-chip__value">start.gg</span>
-            <span className="stat-chip__label">元ソース</span>
+            <span className="stat-chip__value">3日</span>
+            <span className="stat-chip__label">更新間隔</span>
           </div>
         </div>
       </section>
@@ -137,36 +194,55 @@ const TokyoEvents: React.FC = () => {
             </div>
           </div>
 
-          <div className="metro-map" role="img" aria-label="首都圏イベントの地図">
-            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-              <defs>
-                <pattern id="metro-grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                  <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="0.5" />
-                </pattern>
-              </defs>
-              <rect x="0" y="0" width="100" height="100" fill="#0b1120" />
-              <rect x="0" y="0" width="100" height="100" fill="url(#metro-grid)" />
-              <circle cx="41" cy="36" r="18" fill="rgba(164, 198, 57, 0.08)" />
-              <circle cx="63" cy="53" r="22" fill="rgba(255, 140, 0, 0.06)" />
+          <div className="metro-map" role="img" aria-label="OpenStreetMapを使った東京周辺イベントの地図">
+            <div className="osm-map">
+              {mapTiles.map((tile) => (
+                <img
+                  key={tile.key}
+                  className="osm-map__tile"
+                  src={tile.src}
+                  alt=""
+                  loading="lazy"
+                  style={{ left: `${tile.left}%`, top: `${tile.top}%` }}
+                />
+              ))}
               {visibleEvents.map((event) => {
-                const x = ((event.longitude - bounds.minLng) / (bounds.maxLng - bounds.minLng)) * 100;
-                const y = 100 - ((event.latitude - bounds.minLat) / (bounds.maxLat - bounds.minLat)) * 100;
-                const fill = event.type === 'tournament' ? '#a4c639' : '#ff8c00';
+                const position = getMapPosition(event);
+                const markerStyle = {
+                  left: `${position.x}%`,
+                  top: `${position.y}%`,
+                };
 
                 return (
-                  <circle key={event.id} cx={x} cy={y} r="1.7" fill={fill}>
-                    <title>{`${event.title} · ${prefectureLabels[event.prefecture]}`}</title>
-                  </circle>
+                  <a
+                    key={event.id}
+                    className={`osm-map__marker osm-map__marker--${event.type}`}
+                    href={event.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={markerStyle}
+                    aria-label={`${event.title}、${prefectureLabels[event.prefecture]}`}
+                    title={`${event.title} · ${prefectureLabels[event.prefecture]}`}
+                  >
+                    <span />
+                  </a>
                 );
               })}
-            </svg>
+              <span className="osm-map__label osm-map__label--tokyo">東京</span>
+              <span className="osm-map__label osm-map__label--yokohama">横浜</span>
+              <span className="osm-map__label osm-map__label--chiba">千葉</span>
+              <span className="osm-map__label osm-map__label--saitama">さいたま</span>
+              <a className="osm-map__attribution" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">
+                OpenStreetMap
+              </a>
+            </div>
           </div>
 
           <p className="event-panel__note">
-            {latestVerification
-              ? hasUpcomingEvents
-                ? `最新確認: ${formatWindow(latestVerification)}`
-                : `今後の予定がないため、最後に確認できた記録を表示中: ${formatWindow(latestVerification)}`
+            {hasUpcomingEvents && latestVerification
+              ? `最新確認: ${formatWindow(latestVerification)}。自動更新は3日に1回です。`
+              : latestDataVerification
+                ? `今後の予定はまだ見つかっていません。最後の確認: ${formatWindow(latestDataVerification)}。`
               : 'まだ確認できたイベントはありません。'}
           </p>
         </section>
