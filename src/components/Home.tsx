@@ -9,8 +9,9 @@ const Home: React.FC = () => {
           <p className="eyebrow">初心者ガイド</p>
           <h1>スマブラDX</h1>
           <p className="hero-copy__lede">
-            まずは ルール と うごき を おぼえて、あそぶ場所を みつけて、れきしを すこし知る。
-            このサイトは、はじめての人が ゲームを りかいして、まわりに まざれるように つくりました。
+            スマブラDXは、2001年にゲームキューブで出た任天堂の対戦アクションゲームです。
+            今も世界中で大会が開かれ、プロの選手もいます。
+            このサイトは、はじめての人がゲームとコミュニティを知るための入門ページです。
           </p>
 
           <div className="hero-actions">
@@ -41,32 +42,6 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <aside className="hero-panel glass-panel">
-          <p className="hero-panel__label">ここから</p>
-          <div className="guide-steps">
-            <div className="guide-step">
-              <span className="guide-step__index">01</span>
-              <div>
-                <h3>ゲームを知る</h3>
-                <p>うごき、シールド、崖、そして さいしょに おぼえる技を みます。</p>
-              </div>
-            </div>
-            <div className="guide-step">
-              <span className="guide-step__index">02</span>
-              <div>
-                <h3>対戦の場を見つける</h3>
-                <p>Slippi で ネット対戦をしたり、東京の会場や大会に 行けます。</p>
-              </div>
-            </div>
-            <div className="guide-step">
-              <span className="guide-step__index">03</span>
-              <div>
-                <h3>なぜ遊ぶかを知る</h3>
-                <p>れきしを知ると、このゲームが 今も おもしろい理由が わかります。</p>
-              </div>
-            </div>
-          </div>
-        </aside>
       </section>
 
       <section className="home-grid">
