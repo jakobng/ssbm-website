@@ -146,7 +146,7 @@ const TokyoEvents: React.FC = () => {
     <div className="page page--events">
       <section className="page-hero">
         <div>
-          <p className="eyebrow">遊ぶ場所</p>
+          <p className="eyebrow">大会</p>
           <h2>首都圏イベント</h2>
           <p className="page-copy">
             東京・神奈川・埼玉・千葉のスマブラDXイベントを、地図と一覧で見られるページです。

@@ -19,7 +19,7 @@ const Home: React.FC = () => {
               遊び方
             </Link>
             <Link to="/events" className="gc-button b-button">
-              遊ぶ場所
+              大会
             </Link>
             <Link to="/history" className="gc-button">
               なぜ遊ぶか
@@ -56,13 +56,13 @@ const Home: React.FC = () => {
           </Link>
         </div>
         <div className="glass-panel home-card">
-          <p className="eyebrow">遊ぶ場所</p>
+          <p className="eyebrow">大会</p>
           <h3>Slippi と 東京</h3>
           <p>
             すぐに Slippi で ネット対戦をしたり、東京で 会場や大会を さがせます。
           </p>
           <Link to="/events" className="card-link">
-            遊ぶ場所を見る
+            大会を見る
           </Link>
         </div>
         <div className="glass-panel home-card">

@@ -59,7 +59,7 @@ const App: React.FC = () => {
               ファイター
             </NavLink>
             <NavLink to="/events" className={({ isActive }) => `nav-link${isActive ? ' nav-link--active' : ''}`}>
-              遊ぶ場所
+              大会
             </NavLink>
           </nav>
         </header>
