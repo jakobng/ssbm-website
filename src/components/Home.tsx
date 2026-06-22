@@ -11,6 +11,10 @@ const Home: React.FC = () => {
   return (
     <div className="page page--home">
       <section className="hero-shell">
+        <figure className="home-hero-image" aria-label="スマブラDXのパッケージ">
+          <img src={asset('images/history/melee-box.jpg')} alt="スマブラDXのゲームキューブ版パッケージ" />
+        </figure>
+
         <div className="hero-copy">
           <p className="eyebrow">初心者ガイド</p>
           <h1>スマブラDX</h1>
@@ -20,10 +24,6 @@ const Home: React.FC = () => {
             このサイトは、はじめての人がゲームとコミュニティを知るための入門ページです。
           </p>
         </div>
-
-        <figure className="home-hero-image" aria-label="スマブラDXのパッケージ">
-          <img src={asset('images/history/melee-box.jpg')} alt="スマブラDXのゲームキューブ版パッケージ" />
-        </figure>
       </section>
     </div>
   );

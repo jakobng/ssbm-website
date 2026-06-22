@@ -195,14 +195,14 @@
 
 .hero-shell {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 26px;
-  align-items: start;
+  grid-template-columns: minmax(260px, 380px) minmax(0, 1fr);
+  gap: 34px;
+  align-items: center;
 }
 
 .hero-copy {
-  max-width: 760px;
-  padding: 28px 8px 0;
+  max-width: 620px;
+  padding: 20px 8px 20px 0;
 }
 
 .hero-copy h1 {
@@ -219,15 +219,15 @@
 }
 
 .home-hero-image {
-  width: min(100%, 760px);
+  width: min(100%, 380px);
   margin: 0;
 }
 
 .home-hero-image img {
   display: block;
   width: 100%;
-  max-height: 620px;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   object-position: center;
   border-radius: 18px;
   border: 1px solid rgba(200, 227, 77, 0.18);
@@ -2009,8 +2009,15 @@
     flex-direction: column;
   }
 
-  .stat-strip {
-    justify-content: flex-start;
+  .home-hero-image {
+    justify-self: center;
+    width: min(100%, 340px);
+  }
+
+  .hero-copy {
+    justify-self: center;
+    padding: 0 8px;
+    text-align: center;
   }
 
   .roster-list {
