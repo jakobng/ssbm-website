@@ -121,7 +121,6 @@ const TokyoEvents: React.FC = () => {
     [activeEvents, filter]
   );
 
-  const venueCount = new Set(activeEvents.map((event) => event.venue)).size;
   const latestVerification = useMemo(() => {
     return activeEvents.reduce<string | undefined>((latest, event) => {
       if (!latest) {
@@ -152,21 +151,6 @@ const TokyoEvents: React.FC = () => {
             東京・神奈川・埼玉・千葉のスマブラDXイベントを、地図と一覧で見られるページです。
             start.gg と公式SNSを見ながら、場所とリンクがすぐわかるようにしています。
           </p>
-        </div>
-
-        <div className="stat-strip">
-          <div className="stat-chip">
-            <span className="stat-chip__value">{activeEvents.length}</span>
-            <span className="stat-chip__label">掲載中</span>
-          </div>
-          <div className="stat-chip">
-            <span className="stat-chip__value">{venueCount}</span>
-            <span className="stat-chip__label">会場</span>
-          </div>
-          <div className="stat-chip">
-            <span className="stat-chip__value">3日</span>
-            <span className="stat-chip__label">更新間隔</span>
-          </div>
         </div>
       </section>
 

@@ -17,20 +17,6 @@ const Characters: React.FC = () => {
             細かい技より先に、落下タイプと戦い方のイメージをつかむための一覧です。
           </p>
         </div>
-        <div className="stat-strip">
-          <div className="stat-chip">
-            <span className="stat-chip__value">{fighters.length}</span>
-            <span className="stat-chip__label">掲載キャラ</span>
-          </div>
-          <div className="stat-chip">
-            <span className="stat-chip__value">上位のみ</span>
-            <span className="stat-chip__label">大会目線</span>
-          </div>
-          <div className="stat-chip">
-            <span className="stat-chip__value">3</span>
-            <span className="stat-chip__label">落下タイプ</span>
-          </div>
-        </div>
       </section>
 
       <section className="fighter-overview" aria-label="大会で使われるファイター一覧">

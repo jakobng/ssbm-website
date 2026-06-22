@@ -108,20 +108,6 @@ const History: React.FC = () => {
             細かい話より、まず大きな流れがわかるようにしています。
           </p>
         </div>
-        <div className="stat-strip">
-          <div className="stat-chip">
-            <span className="stat-chip__value">2001</span>
-            <span className="stat-chip__label">始まり</span>
-          </div>
-          <div className="stat-chip">
-            <span className="stat-chip__value">5</span>
-            <span className="stat-chip__label">五神</span>
-          </div>
-          <div className="stat-chip">
-            <span className="stat-chip__value">今</span>
-            <span className="stat-chip__label">まだ続く</span>
-          </div>
-        </div>
       </section>
 
       <section className="history-timeline" aria-label="スマブラDXの大会史">
