@@ -84,7 +84,7 @@ export const fighters: FighterData[] = [
     emblem: 'MR',
     summary: '長い剣で間合いを作り、相手の入り方を読んで大きく返すキャラです。',
     fallType: '中量級',
-    archetype: 'スペーサー',
+    archetype: 'ゾーナー',
     tier: 'トップティア',
     strengths: ['リーチ', '間合い管理', '着地狩り'],
   },
