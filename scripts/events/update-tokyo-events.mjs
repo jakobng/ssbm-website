@@ -162,8 +162,10 @@ const tournamentToRecord = (tournament) => {
     return null;
   }
 
-  const venue = tournament.venueName || tournament.locationDisplayName || tournament.city || tournament.addrState || '東京';
   const address = tournament.venueAddress || tournament.fullAddress || tournament.locationDisplayName || undefined;
+  const venue = address?.includes('万代町')
+    ? '横浜市技能文化会館'
+    : tournament.venueName || tournament.locationDisplayName || tournament.city || tournament.addrState || '東京';
 
   const prefecture = normalizePrefecture(tournament);
 

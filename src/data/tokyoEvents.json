@@ -5,7 +5,7 @@
     "tournamentName": "第52回クロブラ/神奈川スマブラ対戦会クロブラ/Kurobra52",
     "startAt": "2026-07-18T00:00:00.000Z",
     "endAt": "2026-07-18T10:00:00.000Z",
-    "venue": "おださがプラザ",
+    "venue": "横浜市技能文化会館",
     "address": "日本、〒231-8575 神奈川県横浜市中区万代町２丁目４−７",
     "prefecture": "Kanagawa",
     "latitude": 35.4419858,
@@ -13,6 +13,6 @@
     "type": "tournament",
     "sourceUrl": "https://www.start.gg/tournament/52-kurobra52/event/melee-singles",
     "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-06-19T21:56:46.760Z"
+    "lastVerifiedAt": "2026-06-22T08:26:14.136Z"
   }
 ]

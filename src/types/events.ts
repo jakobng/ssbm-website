@@ -2,8 +2,9 @@ export type EventRecord = {
   id: string;
   title: string;
   tournamentName: string;
-  startAt: string;
+  startAt?: string;
   endAt?: string;
+  scheduleNote?: string;
   venue: string;
   address?: string;
   prefecture: 'Tokyo' | 'Kanagawa' | 'Saitama' | 'Chiba';

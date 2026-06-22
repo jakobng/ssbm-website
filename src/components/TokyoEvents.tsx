@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import eventsData from '../data/tokyoEvents.json';
+import manualEventsData from '../data/manualTokyoEvents.json';
 import type { EventRecord } from '../types/events';
 
 const dateFormatter = new Intl.DateTimeFormat('ja-JP', {
@@ -87,17 +88,29 @@ const formatWindow = (startAt: string, endAt?: string): string => {
   return `${dateFormatter.format(start)} ${timeFormatter.format(start)} - ${timeFormatter.format(end)}`;
 };
 
+const getSortTime = (event: EventRecord) => {
+  return event.startAt ? new Date(event.startAt).getTime() : Number.MAX_SAFE_INTEGER;
+};
+
+const getEventWindow = (event: EventRecord) => {
+  if (event.startAt) {
+    return formatWindow(event.startAt, event.endAt);
+  }
+
+  return event.scheduleNote || '日程は公式ページで確認';
+};
+
 const TokyoEvents: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'tournament' | 'meetup'>('all');
   const [now] = useState(() => Date.now());
 
   const allEvents = useMemo(() => {
-    return (eventsData as EventRecord[])
-      .sort((a, b) => new Date(a.startAt).getTime() - new Date(b.startAt).getTime());
+    return ([...(eventsData as EventRecord[]), ...(manualEventsData as EventRecord[])])
+      .sort((a, b) => getSortTime(a) - getSortTime(b));
   }, []);
 
   const upcomingEvents = useMemo(() => {
-    return allEvents.filter((event) => new Date(event.startAt).getTime() >= now);
+    return allEvents.filter((event) => !event.startAt || new Date(event.startAt).getTime() >= now);
   }, [allEvents, now]);
 
   const hasUpcomingEvents = upcomingEvents.length > 0;
@@ -137,7 +150,7 @@ const TokyoEvents: React.FC = () => {
           <h2>首都圏イベント</h2>
           <p className="page-copy">
             東京・神奈川・埼玉・千葉のスマブラDXイベントを、地図と一覧で見られるページです。
-            start.gg から3日に1回まとめて、場所とリンクがすぐわかるようにしています。
+            start.gg と公式SNSを見ながら、場所とリンクがすぐわかるようにしています。
           </p>
         </div>
 
@@ -274,7 +287,7 @@ const TokyoEvents: React.FC = () => {
                     <span className={`event-badge event-badge--${event.type}`}>{typeLabels[event.type]}</span>
                   </div>
 
-                  <p className="event-card__window">{formatWindow(event.startAt, event.endAt)}</p>
+                  <p className="event-card__window">{getEventWindow(event)}</p>
                   <p className="event-card__venue">{event.venue}{event.address ? ` · ${event.address}` : ''}</p>
 
                   <div className="event-card__meta">

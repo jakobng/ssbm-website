@@ -1,0 +1,47 @@
+[
+  {
+    "id": "manual-kurobra-official",
+    "title": "クロブラ",
+    "tournamentName": "神奈川スマブラ対戦会クロブラ",
+    "scheduleNote": "次回日は公式Xで確認",
+    "venue": "横浜市技能文化会館など",
+    "address": "神奈川県横浜市中区万代町2丁目4-7",
+    "prefecture": "Kanagawa",
+    "latitude": 35.4419858,
+    "longitude": 139.6349043,
+    "type": "tournament",
+    "sourceUrl": "https://twitter.com/Kurobra_SSB?mx=1",
+    "sourceName": "公式X",
+    "lastVerifiedAt": "2026-06-22T08:30:00.000Z"
+  },
+  {
+    "id": "manual-bgw-official",
+    "title": "Battle GateWay (BGW)",
+    "tournamentName": "東京のスマブラDX大会シリーズ",
+    "scheduleNote": "次回日は公式Xで確認",
+    "venue": "Red Bull Gaming Sphere Tokyo",
+    "address": "東京都中野区中野3丁目33-18 フェルテ中野 B1F",
+    "prefecture": "Tokyo",
+    "latitude": 35.702942,
+    "longitude": 139.665283,
+    "type": "tournament",
+    "sourceUrl": "https://twitter.com/battlegateway?mx=1",
+    "sourceName": "公式X",
+    "lastVerifiedAt": "2026-06-22T08:30:00.000Z"
+  },
+  {
+    "id": "manual-shuuten-tokyo",
+    "title": "Shuuten Tokyo",
+    "tournamentName": "終点東京",
+    "scheduleNote": "次回日は公式ページで確認",
+    "venue": "chik.takシェアスペース",
+    "address": "東京都台東区駒形2丁目3-4 荒井第一ビル2F",
+    "prefecture": "Tokyo",
+    "latitude": 35.7053236,
+    "longitude": 139.7938473,
+    "type": "tournament",
+    "sourceUrl": "https://www.start.gg/tournament/shuuten-tokyo-26/details",
+    "sourceName": "start.gg",
+    "lastVerifiedAt": "2026-06-22T08:30:00.000Z"
+  }
+]
