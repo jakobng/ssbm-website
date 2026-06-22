@@ -73,10 +73,6 @@ const App: React.FC = () => {
             <Route path="/events" element={<TokyoEvents />} />
           </Routes>
         </main>
-
-        <footer className="site-footer">
-          <p>任天堂の著作物です。非営利の案内ページです。</p>
-        </footer>
       </div>
     </Router>
   );
