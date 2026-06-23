@@ -6,12 +6,12 @@ const Techniques: React.FC = () => {
       <section className="page-hero">
         <div>
           <p className="eyebrow">遊び方</p>
-          <h2>Xの特徴</h2>
+          <h2>DXの特徴</h2>
         </div>
       </section>
 
       <section className="technique-notes glass-panel">
-        <h3>Xの特徴</h3>
+        <h3>DXの特徴</h3>
         <div className="technique-lines">
           <p>入力バッファがない</p>
           <p>アニメーション中でコンソールがプレイヤーのインプットに反応しない</p>
