@@ -1144,6 +1144,66 @@
     rgba(255, 255, 255, 0.055);
 }
 
+.page--techniques {
+  gap: 20px;
+}
+
+.technique-notes {
+  padding: 24px;
+  display: grid;
+  gap: 16px;
+}
+
+.technique-notes h3 {
+  font-size: 1rem;
+  line-height: 1.45;
+  text-transform: none;
+}
+
+.technique-notes p,
+.technique-lines p,
+.stage-list {
+  color: var(--gc-silver);
+  line-height: 1.85;
+  font-size: 0.95rem;
+}
+
+.technique-lines {
+  display: grid;
+  gap: 8px;
+}
+
+.stage-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.stage-list li + li {
+  margin-top: 6px;
+}
+
+.video-frame {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(200, 227, 77, 0.18);
+  background: rgba(0, 0, 0, 0.36);
+}
+
+.video-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-link {
+  color: var(--gc-accent-green);
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+}
+
 .technique-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
