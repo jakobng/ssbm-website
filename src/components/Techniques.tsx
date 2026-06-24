@@ -11,12 +11,11 @@ const Techniques: React.FC = () => {
       </section>
 
       <section className="technique-notes glass-panel">
-        <h3>DXの特徴</h3>
         <div className="technique-lines">
           <p>入力バッファがない</p>
           <p>アニメーション中でコンソールがプレイヤーのインプットに反応しない</p>
-          <p>他のスマブラより</p>
-          <p>コンボができます。</p>
+          <h3>他のスマブラより</h3>
+          <p>コンボができる。</p>
           <p>早いスピード</p>
           <p>難しいテクニックがある</p>
         </div>
@@ -56,7 +55,7 @@ const Techniques: React.FC = () => {
 
       <section className="technique-notes glass-panel">
         <h3>大会ルールセット</h3>
-        <p>ステージ中で六つだけを使用している。</p>
+        <p>ステージ中で六つだけを使用する。</p>
         <ul className="stage-list">
           <li>ヨッシーストーリー</li>
           <li>夢の泉</li>
@@ -70,7 +69,7 @@ const Techniques: React.FC = () => {
 
       <section className="technique-notes glass-panel">
         <h3>メインを選ぶ</h3>
-        <p>DXが難しいゲームなので、キャラクター中で、一人だけを選ぶのほうがいい。大半の人は上位のファイターを選びます。</p>
+        <p>DXが難しいゲームなので、キャラクター中で、一人だけを選ぶのほうがいい。大半の人は上位のファイターを選ぶ。</p>
       </section>
     </div>
   );
