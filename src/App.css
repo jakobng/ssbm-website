@@ -1160,6 +1160,12 @@
   text-transform: none;
 }
 
+.technique-notes h4 {
+  color: var(--gc-silver);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
 .technique-notes p,
 .technique-lines p,
 .stage-list {

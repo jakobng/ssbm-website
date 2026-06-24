@@ -22,7 +22,8 @@ const Techniques: React.FC = () => {
       </section>
 
       <section className="technique-notes glass-panel">
-        <h3>絶空・Wavedash</h3>
+        <h3>上級テクニック</h3>
+        <h4>絶空・Wavedash</h4>
         <div className="video-frame">
           <iframe
             src="https://www.youtube-nocookie.com/embed/HEwgKpLtqP4"
