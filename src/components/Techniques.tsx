@@ -39,7 +39,8 @@ const Techniques: React.FC = () => {
       </section>
 
       <section className="technique-notes glass-panel">
-        <h3>着地キャンセル</h3>
+        <h3>上級テクニック</h3>
+        <h4>着地キャンセル</h4>
         <div className="video-frame">
           <iframe
             src="https://www.youtube-nocookie.com/embed/-h9x8zrAUdE"
