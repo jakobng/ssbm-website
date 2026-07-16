@@ -13,6 +13,22 @@
     "type": "tournament",
     "sourceUrl": "https://www.start.gg/tournament/52-kurobra52/event/melee-singles",
     "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-07-13T21:42:05.346Z"
+    "lastVerifiedAt": "2026-07-16T21:53:06.801Z"
+  },
+  {
+    "id": "startgg-933082-1667945",
+    "title": "Melee Singles (1v1)",
+    "tournamentName": "Shuuten Tokyo #28（終点東京）",
+    "startAt": "2026-08-08T03:00:00.000Z",
+    "endAt": "2026-08-08T09:00:00.000Z",
+    "venue": "JP",
+    "address": "Tokyo, Japan",
+    "prefecture": "Tokyo",
+    "latitude": 35.6764225,
+    "longitude": 139.650027,
+    "type": "tournament",
+    "sourceUrl": "https://www.start.gg/tournament/shuuten-tokyo-28/event/melee-singles-1v1",
+    "sourceName": "start.gg",
+    "lastVerifiedAt": "2026-07-16T21:53:06.801Z"
   }
 ]
