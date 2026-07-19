@@ -1,21 +1,5 @@
 [
   {
-    "id": "startgg-919380-1640298",
-    "title": "Melee Singles",
-    "tournamentName": "第52回クロブラ/神奈川スマブラ対戦会クロブラ/Kurobra52",
-    "startAt": "2026-07-18T00:00:00.000Z",
-    "endAt": "2026-07-18T10:00:00.000Z",
-    "venue": "横浜市技能文化会館",
-    "address": "日本、〒231-8575 神奈川県横浜市中区万代町２丁目４−７",
-    "prefecture": "Kanagawa",
-    "latitude": 35.4419858,
-    "longitude": 139.6349043,
-    "type": "tournament",
-    "sourceUrl": "https://www.start.gg/tournament/52-kurobra52/event/melee-singles",
-    "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-07-16T21:53:06.801Z"
-  },
-  {
     "id": "startgg-933082-1667945",
     "title": "Melee Singles (1v1)",
     "tournamentName": "Shuuten Tokyo #28（終点東京）",
@@ -29,6 +13,6 @@
     "type": "tournament",
     "sourceUrl": "https://www.start.gg/tournament/shuuten-tokyo-28/event/melee-singles-1v1",
     "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-07-16T21:53:06.801Z"
+    "lastVerifiedAt": "2026-07-19T21:39:18.748Z"
   }
 ]
