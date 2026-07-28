@@ -13,14 +13,14 @@
     "type": "tournament",
     "sourceUrl": "https://www.start.gg/tournament/shuuten-tokyo-28/event/melee-singles-1v1",
     "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-07-25T21:41:27.190Z"
+    "lastVerifiedAt": "2026-07-28T21:53:47.485Z"
   },
   {
     "id": "startgg-934932-1671688",
     "title": "Melee Singles",
     "tournamentName": "The SourDojo 9",
-    "startAt": "2026-08-22T08:00:00.000Z",
-    "endAt": "2026-08-22T14:00:00.000Z",
+    "startAt": "2026-08-15T08:00:00.000Z",
+    "endAt": "2026-08-15T14:00:00.000Z",
     "venue": "Musashino, JP",
     "address": "Kichijōji, Musashino, Tokyo, Japan",
     "prefecture": "Tokyo",
@@ -29,6 +29,6 @@
     "type": "tournament",
     "sourceUrl": "https://www.start.gg/tournament/the-sourdojo-9/event/melee-singles",
     "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-07-25T21:41:27.191Z"
+    "lastVerifiedAt": "2026-07-28T21:53:47.485Z"
   }
 ]
