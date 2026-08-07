@@ -13,7 +13,7 @@
     "type": "tournament",
     "sourceUrl": "https://www.start.gg/tournament/shuuten-tokyo-28/event/melee-singles-1v1",
     "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-08-04T22:02:32.631Z"
+    "lastVerifiedAt": "2026-08-07T21:26:20.871Z"
   },
   {
     "id": "startgg-934932-1671688",
@@ -29,7 +29,7 @@
     "type": "tournament",
     "sourceUrl": "https://www.start.gg/tournament/the-sourdojo-9/event/melee-singles",
     "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-08-04T22:02:32.631Z"
+    "lastVerifiedAt": "2026-08-07T21:26:20.871Z"
   },
   {
     "id": "startgg-934675-1671133",
@@ -45,6 +45,6 @@
     "type": "tournament",
     "sourceUrl": "https://www.start.gg/tournament/53-kurobra53/event/kurobra-melee-singles",
     "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-08-04T22:02:32.631Z"
+    "lastVerifiedAt": "2026-08-07T21:26:20.871Z"
   }
 ]
