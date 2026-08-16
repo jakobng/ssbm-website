@@ -1,21 +1,5 @@
 [
   {
-    "id": "startgg-934932-1671688",
-    "title": "Melee Singles",
-    "tournamentName": "The SourDojo 9",
-    "startAt": "2026-08-15T08:20:00.000Z",
-    "endAt": "2026-08-15T14:00:00.000Z",
-    "venue": "Musashino, JP",
-    "address": "Kichijōji, Musashino, Tokyo, Japan",
-    "prefecture": "Tokyo",
-    "latitude": 35.704096,
-    "longitude": 139.5802054,
-    "type": "tournament",
-    "sourceUrl": "https://www.start.gg/tournament/the-sourdojo-9/event/melee-singles",
-    "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-08-13T21:32:28.793Z"
-  },
-  {
     "id": "startgg-934675-1671133",
     "title": "Kurobra/Melee Singles",
     "tournamentName": "第53回クロブラ/神奈川スマブラ対戦会クロブラ/Kurobra53",
@@ -29,6 +13,6 @@
     "type": "tournament",
     "sourceUrl": "https://www.start.gg/tournament/53-kurobra53/event/kurobra-melee-singles",
     "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-08-13T21:32:28.793Z"
+    "lastVerifiedAt": "2026-08-16T21:08:27.424Z"
   }
 ]
