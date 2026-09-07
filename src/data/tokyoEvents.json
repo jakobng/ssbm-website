@@ -1,19 +1,19 @@
 [
   {
-    "id": "startgg-934675-1671133",
-    "title": "Kurobra/Melee Singles",
-    "tournamentName": "第53回クロブラ/神奈川スマブラ対戦会クロブラ/Kurobra53",
-    "startAt": "2026-09-05T01:00:00.000Z",
-    "endAt": "2026-09-05T10:00:00.000Z",
-    "venue": "横浜市技能文化会館",
-    "address": "日本、〒231-8575 神奈川県横浜市中区万代町２丁目４−７",
-    "prefecture": "Kanagawa",
-    "latitude": 35.4419858,
-    "longitude": 139.6349043,
+    "id": "startgg-950910-1704771",
+    "title": "Melee Singles (1v1)",
+    "tournamentName": "Shuuten Tokyo #29（終点東京）",
+    "startAt": "2026-09-12T05:00:00.000Z",
+    "endAt": "2026-09-12T09:00:00.000Z",
+    "venue": "JP",
+    "address": "Tokyo, Japan",
+    "prefecture": "Tokyo",
+    "latitude": 35.6764225,
+    "longitude": 139.650027,
     "type": "tournament",
-    "sourceUrl": "https://www.start.gg/tournament/53-kurobra53/event/kurobra-melee-singles",
+    "sourceUrl": "https://www.start.gg/tournament/shuuten-tokyo-29/event/melee-singles-1v1",
     "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-09-04T22:35:50.604Z"
+    "lastVerifiedAt": "2026-09-07T23:05:51.733Z"
   },
   {
     "id": "startgg-945226-1693003",
@@ -29,6 +29,38 @@
     "type": "tournament",
     "sourceUrl": "https://www.start.gg/tournament/the-sourdojo-10/event/melee-singles",
     "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-09-04T22:35:50.604Z"
+    "lastVerifiedAt": "2026-09-07T23:05:51.733Z"
+  },
+  {
+    "id": "startgg-950912-1704776",
+    "title": "Melee Singles (1v1)",
+    "tournamentName": "Shuuten Tokyo #30（終点東京）",
+    "startAt": "2026-10-17T05:00:00.000Z",
+    "endAt": "2026-10-17T09:00:00.000Z",
+    "venue": "JP",
+    "address": "Tokyo, Japan",
+    "prefecture": "Tokyo",
+    "latitude": 35.6764225,
+    "longitude": 139.650027,
+    "type": "tournament",
+    "sourceUrl": "https://www.start.gg/tournament/shuuten-tokyo-30/event/melee-singles-1v1",
+    "sourceName": "start.gg",
+    "lastVerifiedAt": "2026-09-07T23:05:51.733Z"
+  },
+  {
+    "id": "startgg-950545-1704076",
+    "title": "スマブラDX シングルス/Melee Singles",
+    "tournamentName": "BattleGateWay #53",
+    "startAt": "2026-10-31T02:00:00.000Z",
+    "endAt": "2026-10-31T11:00:00.000Z",
+    "venue": "大田区産業プラザPiO",
+    "address": "日本、〒164-0001 東京都中野区中野３丁目３３−１８",
+    "prefecture": "Tokyo",
+    "latitude": 35.7029949,
+    "longitude": 139.6653158,
+    "type": "tournament",
+    "sourceUrl": "https://www.start.gg/tournament/battlegateway-53/event/dx-melee-singles",
+    "sourceName": "start.gg",
+    "lastVerifiedAt": "2026-09-07T23:05:51.733Z"
   }
 ]
