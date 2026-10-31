@@ -1,21 +1,5 @@
 [
   {
-    "id": "startgg-950545-1704076",
-    "title": "スマブラDX シングルス/Melee Singles",
-    "tournamentName": "BattleGateWay #53",
-    "startAt": "2026-10-31T02:00:00.000Z",
-    "endAt": "2026-10-31T11:00:00.000Z",
-    "venue": "大田区産業プラザPiO",
-    "address": "日本、〒164-0001 東京都中野区中野３丁目３３−１８",
-    "prefecture": "Tokyo",
-    "latitude": 35.7029949,
-    "longitude": 139.6653158,
-    "type": "tournament",
-    "sourceUrl": "https://www.start.gg/tournament/battlegateway-53/event/dx-melee-singles",
-    "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-10-29T00:29:08.143Z"
-  },
-  {
     "id": "startgg-959318-1722694",
     "title": "Kurobra/Melee Singles",
     "tournamentName": "第54回クロブラ/神奈川スマブラ対戦会クロブラ/Kurobra54",
@@ -29,6 +13,6 @@
     "type": "tournament",
     "sourceUrl": "https://www.start.gg/tournament/54-kurobra54/event/kurobra-melee-singles",
     "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-10-29T00:29:08.143Z"
+    "lastVerifiedAt": "2026-10-31T23:49:23.311Z"
   }
 ]
