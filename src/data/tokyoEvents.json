@@ -13,6 +13,22 @@
     "type": "tournament",
     "sourceUrl": "https://www.start.gg/tournament/54-kurobra54/event/kurobra-melee-singles",
     "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-10-31T23:49:23.311Z"
+    "lastVerifiedAt": "2026-11-01T23:59:38.948Z"
+  },
+  {
+    "id": "startgg-970640-1746619",
+    "title": "Melee Singles",
+    "tournamentName": "The SourDojo #11",
+    "startAt": "2026-11-14T08:30:00.000Z",
+    "endAt": "2026-11-14T14:00:00.000Z",
+    "venue": "Musashino, JP",
+    "address": "Kichijōji, Musashino, Tokyo, Japan",
+    "prefecture": "Tokyo",
+    "latitude": 35.704096,
+    "longitude": 139.5802054,
+    "type": "tournament",
+    "sourceUrl": "https://www.start.gg/tournament/the-sourdojo-11/event/melee-singles",
+    "sourceName": "start.gg",
+    "lastVerifiedAt": "2026-11-01T23:59:38.948Z"
   }
 ]
