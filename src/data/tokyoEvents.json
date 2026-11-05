@@ -13,7 +13,7 @@
     "type": "tournament",
     "sourceUrl": "https://www.start.gg/tournament/54-kurobra54/event/kurobra-melee-singles",
     "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-11-01T23:59:38.948Z"
+    "lastVerifiedAt": "2026-11-05T01:07:20.256Z"
   },
   {
     "id": "startgg-970640-1746619",
@@ -29,6 +29,22 @@
     "type": "tournament",
     "sourceUrl": "https://www.start.gg/tournament/the-sourdojo-11/event/melee-singles",
     "sourceName": "start.gg",
-    "lastVerifiedAt": "2026-11-01T23:59:38.948Z"
+    "lastVerifiedAt": "2026-11-05T01:07:20.256Z"
+  },
+  {
+    "id": "startgg-971767-1749003",
+    "title": "Melee Singles (1v1)",
+    "tournamentName": "Shuuten Tokyo #31（終点東京）",
+    "startAt": "2026-12-05T03:00:00.000Z",
+    "endAt": "2026-12-26T09:00:00.000Z",
+    "venue": "JP",
+    "address": "Tokyo, Japan",
+    "prefecture": "Tokyo",
+    "latitude": 35.6764225,
+    "longitude": 139.650027,
+    "type": "tournament",
+    "sourceUrl": "https://www.start.gg/tournament/shuuten-tokyo-31/event/melee-singles-1v1",
+    "sourceName": "start.gg",
+    "lastVerifiedAt": "2026-11-05T01:07:20.256Z"
   }
 ]
